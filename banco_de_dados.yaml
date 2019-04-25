@@ -1,25 +1,28 @@
 version: "3"
 services:
-  postgres:
-    image: postgres
+  mongo: 
+    image: mongo 
     ports: 
-         - "5432:5432"
+      - "27017:27017" 
     environment: 
-      POSTGRES_USER: "root"
-      POSTGRES_PASSWORD: "root"
-      POSTGRES_DB: "monstros"
-    networks:
-      - pgnet
+      MONGO_INITDB_ROOT_USERNAME: "root" 
+      MONGO_INITDB_ROOT_PASSWORD: "root" 
+      MONGO_INITDB_DATABASE: "monsters" 
+    networks: 
+      - mongonet
     
-  adminer:
-    image: adminer
+  mongoclient: 
+    image: mongoclient/mongoclient 
     ports: 
-            - "8080:8080"
+      - "8081:3000" 
     depends_on: 
-      - postgres
-    networks:
-      - pgnet
+      - mongo 
+    environment: 
+      STARTUP_DELAY: 10 
+      MONGO_URL: "mongodb://root:root@mongo:27017/admin" 
+    networks: 
+      - mongonet
 
 
 networks:
-  pgnet:
+  mongonet:

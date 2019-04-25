@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MonstroAnalise.exe" size="31216">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MonstroAnalise.exe" size="34800">
       <assemblyIdentity name="MonstroAnalise" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>RWx7dl81IpOCgaAyfwuZ7LjcymNsAMV0ax0Jc6JgFtA=</dsig:DigestValue>
+        <dsig:DigestValue>9NZqxgo5pdxdwzDWd4+G7tiTxfLE12+aR8FC4am3MuA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
