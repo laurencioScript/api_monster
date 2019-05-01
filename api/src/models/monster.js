@@ -1,8 +1,6 @@
 const mongoose = require('../database');
 
 const MonsterSchema = new mongoose.Schema({
-
-
     
     nome:{
         type:String,
@@ -39,12 +37,10 @@ const MonsterSchema = new mongoose.Schema({
     atributo: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Atributo',
-        require: true,
     },
     deslocamento: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Deslocamento',
-        require: true
+        ref: 'Deslocamento'
     },
     tracos: [{
         type: mongoose.Schema.Types.ObjectId,

@@ -18,8 +18,8 @@ namespace MonstroAnalise
         public Observador(int valor)
         {
             Console.Clear();
+            this.monstro = Json.readJson();
             Clear();
-            
             Oraculo(valor);
 
         }
@@ -67,7 +67,6 @@ namespace MonstroAnalise
         {
             Console.WriteLine("Nome do arquivo:");
             string input = Console.ReadLine();
-
             Json.writeJson(convert(Json.readJson()),input);
 
         }
@@ -80,7 +79,6 @@ namespace MonstroAnalise
             {
                 newMonster.Add(new MonstroMaster(elemento.desafio, elemento.xp, elemento.nome, elemento.tipo,
                     elemento.tamanho, elemento.tendencia, elemento.pontosDeVida, elemento.classeArmadura));
-
 
                 int index = newMonster.Count;
 
@@ -106,7 +104,11 @@ namespace MonstroAnalise
                 }
                 foreach (var valor in elemento.reacoes)
                 {
-                    newMonster[index - 1].reacoes.Add(new Reacao(valor));
+                   
+                    if(valor != "" ) {
+                        var rei = Separador(valor);
+                        newMonster[index - 1].reacoes.Add(new Reacao(rei[0],rei[1]));
+                    }
                 }
                 foreach (var valor in elemento.resistencia_dano)
                 {
@@ -122,15 +124,24 @@ namespace MonstroAnalise
                 }
                 foreach (var valor in elemento.tracos_especiais)
                 {
-                    newMonster[index - 1].tracos.Add(new Tracos(valor)) ;
+                    if (valor != "") {
+                        var rei = Separador(valor);
+                        newMonster[index - 1].tracos.Add(new Tracos(rei[0], rei[1])) ;
+                    }
                 }
                 foreach (var valor in elemento.acao)
                 {
-                    newMonster[index - 1].acao.Add(new Acao(valor));
+                    if (valor != "") {
+                        var rei = Separador(valor);
+                        newMonster[index - 1].acao.Add(new Acao(rei[0], rei[1]));
+                    }
                 }
-                foreach (var valor in elemento.equipamentos)
+                foreach (var valor in elemento.acaoLendarias)
                 {
-                    newMonster[index - 1].acaoLendarias.Add(new Acao_lendaria(valor));
+                    if (valor != "") {
+                        var rei = Separador(valor);
+                        newMonster[index - 1].acaoLendarias.Add(new Acao_lendaria(rei[0], rei[1]));
+                    }
                 }
                 foreach (var valor in elemento.equipamentos)
                 {
@@ -1076,167 +1087,44 @@ namespace MonstroAnalise
 
         }
 
-        public void Insert()
+        private string[] Separador(string texto)
         {
-            for(int x = 0; x <= 10; x++)
+            int localPonto = 0;
+            int localParentese = 0;
+            string[] obj = new string[2];
+            //Gabriel 0123456
+
+            localPonto = texto.IndexOf(".");
+            localParentese = texto.IndexOf("(");
+            
+            // parentese existir e for antes do ponto final
+            if (localParentese < localPonto && localParentese > 0)
             {
-                Console.WriteLine("insert into monstro (nome,tipo,desafio,xp,tamanho,tendencia,classe_armadura,pontos_de_vida) values ('{0}','{1}','{2}',{3},'{4}','{5}',{6},'{7}');",
-                    monstro[x].nome, 
-                    monstro[x].tipo, 
-                    monstro[x].desafio, 
-                    monstro[x].xp, 
-                    monstro[x].tamanho, 
-                    monstro[x].tendencia, 
-                    monstro[x].classeArmadura,
-                    monstro[x].pontosDeVida);
-
-                Console.WriteLine("insert into atributos (forca,destreza,constituicao,inteligencia,sabedoria,carisma,monstroid) values ({0},{1},{2},{3},{4},{5},(SELECT COUNT(*) FROM Monstro));",
-                    monstro[x].atributo.forca,
-                    monstro[x].atributo.destreza,
-                    monstro[x].atributo.constituicao,
-                    monstro[x].atributo.inteligencia,
-                    monstro[x].atributo.sabedoria,
-                    monstro[x].atributo.carisma);
-
-                Console.WriteLine("insert into deslocamento (escalada,voo,escavacao,deslocamento,natacao,monstroid) values ({0},{1},{2},{3},{4},(SELECT COUNT(*) FROM Monstro));",
-                    monstro[x].deslocamento.escalada,
-                    monstro[x].deslocamento.voo,
-                    monstro[x].deslocamento.escavacao,
-                    monstro[x].deslocamento.deslocamento,
-                    monstro[x].deslocamento.natacao);
-
-                for(int contA = 0; contA < monstro[x].tracos_especiais.Count; contA++)
-                {
-                    if (monstro[x].tracos_especiais[contA] != "")
-                    {
-                        Console.WriteLine("insert into tracos (traco,monstroid) values ('{0}',(SELECT COUNT(*) FROM Monstro));", monstro[x].tracos_especiais[contA]);
-                    }
-                   
-                }
-
-                for(int contX = 0; contX < monstro[x].pericia.Count; contX++)
-                {
-                    if (monstro[x].pericia[contX].tipo != "")
-                    {
-                        Console.WriteLine("insert into pericia (tipo,valor,monstroid) values ('{0}',{1},(SELECT COUNT(*) FROM Monstro));",
-                    monstro[x].pericia[contX].tipo, monstro[x].pericia[contX].valor);
-
-                    }
-                }
-
-                for (int contX = 0; contX < monstro[x].teste_resistencia.Count; contX++)
-                {
-                    if (monstro[x].teste_resistencia[contX].tipo != "")
-                    {
-                        Console.WriteLine("insert into teste_resistencia (tipo,valor,monstroid) values ('{0}',{1},(SELECT COUNT(*) FROM Monstro));",
-                       monstro[x].teste_resistencia[contX].tipo, monstro[x].teste_resistencia[contX].valor);
-                    }
-                   
-                }
-
-                for (int contC = 0; contC < monstro[x].sentidos.Count; contC++)
-                {
-                    if (monstro[x].sentidos[contC].tipo != "")
-                    {
-                        Console.WriteLine("insert into sentidos (sentindo,alcance,monstroid) values ('{0}',{1},(SELECT COUNT(*) FROM Monstro));",
-                                                monstro[x].sentidos[contC].tipo, monstro[x].sentidos[contC].valor);
-                    }
-                    
-                }
-
-                // @@
-
-                for (int contG = 0; contG < monstro[x].acao.Count; contG++)
-                {
-                    if (monstro[x].acao[contG] != "")
-                    {
-                        Console.WriteLine("insert into acao (acao,monstroid) values ('{0}',(SELECT COUNT(*) FROM Monstro));",
-                        monstro[x].acao[contG]);
-                    }
-                    
-                }
-
-                for (int contH = 0; contH < monstro[x].reacoes.Count; contH++)
-                {
-                    if (monstro[x].reacoes[contH] != "")
-                    {
-                        Console.WriteLine("insert into reacao (reacao,monstroid) values ('{0}',(SELECT COUNT(*) FROM Monstro));",
-                        monstro[x].reacoes[contH]);
-                    }
-                    
-                }
-
-                for (int contI = 0; contI < monstro[x].acaoLendarias.Count; contI++)
-                {
-                    if (monstro[x].acaoLendarias[contI] != "")
-                    {
-                        Console.WriteLine("insert into acao_Lendaria (acao_lendaria,monstroid) values ('{0}',(SELECT COUNT(*) FROM Monstro));",
-                        monstro[x].acaoLendarias[contI]);
-                    }
-                    
-                }
-
-                for (int contJ = 0; contJ < monstro[x].equipamentos.Count; contJ++)
-                {
-                    if (monstro[x].equipamentos[contJ] != "")
-                    {
-                        Console.WriteLine("insert into equipamento (equipamento,monstroid) values ('{0}',(SELECT COUNT(*) FROM Monstro));",
-                        monstro[x].equipamentos[contJ]);
-                    }
-                    
-                }
-
-                //@@
-
-                for (int contB =0; contB < monstro[x].idiomas.Count; contB++)
-                {
-                    if (monstro[x].idiomas[contB] != "")
-                    {
-                        Console.WriteLine("insert into idioma (idioma,monstroid) values ('{0}',(SELECT COUNT(*) FROM Monstro));", monstro[x].idiomas[contB]);
-                    }
-                    
-                }
-
-                for(int contD = 0; contD < monstro[x].resistencia_dano.Count; contD++)
-                {
-                    if (monstro[x].resistencia_dano[contD] != "")
-                    {
-                        Console.WriteLine("insert into resistencia_Dano (resistencia,monstroid) values ('{0}',(SELECT COUNT(*) FROM Monstro));",
-                        monstro[x].resistencia_dano[contD]);
-                    }
-                    
-                }
-
-                for(int contE =0; contE < monstro[x].vulnerabilidades.Count; contE++)
-                {
-                    if (monstro[x].vulnerabilidades[contE]!="")
-                    {
-                        Console.WriteLine("insert into vulnerabilidade (vulnerabilidade,monstroid) values ('{0}',(SELECT COUNT(*) FROM Monstro));",
-                        monstro[x].vulnerabilidades[contE]);
-                    }
-                    
-                }
-
-                for (int contF = 0; contF < monstro[x].imunidades.Count;contF++)
-                {
-                    if (monstro[x].imunidades[contF] != "")
-                    {
-                        Console.WriteLine("insert into imunidade (imunidade,monstroid) values ('{0}',(SELECT COUNT(*) FROM Monstro));",
-                        monstro[x].imunidades[contF]);
-                    }
-                    
-                }
-
+                obj[0] = texto.Substring(0,localParentese);
                 
-                
-                
-                
-                
-                
-                
+                obj[1] = texto.Substring(localParentese );
 
-
+            }// parentese não existe e existe ponto
+            else if(localParentese == -1 && localPonto > -1)
+            {
+                obj[0] = texto.Substring(0, localPonto);
+                obj[1] = texto.Substring(localPonto ).Replace(". ","");
             }
+            else if (localParentese > 0 && localPonto > 0)
+            {
+                obj[0] = texto.Substring(0, localPonto);
+                obj[1] = texto.Substring(localPonto).Replace(". ", "");
+            }
+            else
+            {
+                obj[0] = "Traço Unico";
+                obj[1] = texto;
+            }
+            
+            return obj;
+
         }
+
+
     }
 }

@@ -5,6 +5,10 @@ const TracoSchema = new mongoose.Schema({
     type:String,
     require: true,
   },
+  descricao: {
+    type:String,
+    require: true,
+  },
   monster: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Monster',

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="MonstroAnalise.exe" version="1.0.0.3" publicKeyToken="677053a1e16126a4" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="MonstroAnalise" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="MonstroAnalise.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Opções de Manifesto UAC
+          Se desejar mudar o nível de Controle de Conta de Usuário do Windows, substitua o 
+          nó requestedExecutionLevel por um dos seguintes.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Se deseja usar a Virtualização de Arquivos e Registro para compatibilidade 
+         com versões anteriores, exclua o nó requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MonstroAnalise.exe" size="30192">
+      <assemblyIdentity name="MonstroAnalise" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>bRTUSuUQ8+1siiEhJpI7jdYn3sgZQiPYe84NwxBao8o=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="504320">
+      <assemblyIdentity name="Newtonsoft.Json" version="6.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>eL7dn86HenGo2P+agTZi2CSDYeRnBcTvevxh1ED/Lus=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="MonstroAnalise.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>rl5/qDc7Jz+tB+BIbOv9iMGPlRe6YJwrjmU09dnlPcs=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-4ADS99O\Gabriel" issuerKeyHash="bd5a9ec0cc4a33226c1acdd0d0582b88bd7df3c0" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>gwQ94r1GgJNn0ZJNKOxZH8SfmON/e/bSKx9eatTF6iw=</DigestValue></Reference></SignedInfo><SignatureValue>b9q3ZDQd1qiBw1Z+Ox85T8kfPazg2SFER5WnvM9Brk914G+jx6fQRHtP1Itw6HlRQ5R9QiVlZinqlfCDnyaytVWSjoWqTExb3suPPOTYj6nOUVs/w5HZqsAW7luJ+G85wX0WSLF0j4DCSkfZbMByk3U1cEtZp4Xn/BJvkcr6Mso=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>2rTTIeW11MuDjHRkNSKZ+sTe9mAQ2eAGZyhW36cxBurzpI9IdIFMcuhu15QCwFxRYlrhbl6q8EICiVv3m1vMThnYtM3fg6Jl4dYT12FiObtZWzvHTk4Za8TEiJUg3BJ4QQkHUvUDgU8dtwrw6ekTaty3ZC94MgXnS1y7+F75uu0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="2ceac5d46a5e1f2bd2f67b7fe3989fc41f59ec284d92d167938046bde23d0483" Description="" Url=""><as:assemblyIdentity name="MonstroAnalise.exe" version="1.0.0.3" publicKeyToken="677053a1e16126a4" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-4ADS99O\Gabriel</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>7o4D3ObQrzkuPTp2fON17J5Wh9xtCMw5hCK6gJa2USw=</DigestValue></Reference></SignedInfo><SignatureValue>0gnuCqQB5oeyjJpJeU/c3h9E8iFhAQtgLyHoTnH2SXWv7AnDJI6/czoEG0gpf2tL0eyj03Nhxa6XI+qF58BO7dKjAQCLoEJgLAmkyDvzZ6hs4vDd9kZEPmg1hGQC/Y8zfJn2t0gg72bA5NMO0SZcUO9/hDGYQp4rf6o70bLs+UM=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>2rTTIeW11MuDjHRkNSKZ+sTe9mAQ2eAGZyhW36cxBurzpI9IdIFMcuhu15QCwFxRYlrhbl6q8EICiVv3m1vMThnYtM3fg6Jl4dYT12FiObtZWzvHTk4Za8TEiJUg3BJ4QQkHUvUDgU8dtwrw6ekTaty3ZC94MgXnS1y7+F75uu0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB9TCCAV6gAwIBAgIQVpCPppVcnaxLpONIn19nYDANBgkqhkiG9w0BAQsFADA5MTcwNQYDVQQDHi4ARABFAFMASwBUAE8AUAAtADQAQQBEAFMAOQA5AE8AXABHAGEAYgByAGkAZQBsMB4XDTE5MDQxMDAyMjUyN1oXDTIwMDQwOTA4MjUyN1owOTE3MDUGA1UEAx4uAEQARQBTAEsAVABPAFAALQA0AEEARABTADkAOQBPAFwARwBhAGIAcgBpAGUAbDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA2rTTIeW11MuDjHRkNSKZ+sTe9mAQ2eAGZyhW36cxBurzpI9IdIFMcuhu15QCwFxRYlrhbl6q8EICiVv3m1vMThnYtM3fg6Jl4dYT12FiObtZWzvHTk4Za8TEiJUg3BJ4QQkHUvUDgU8dtwrw6ekTaty3ZC94MgXnS1y7+F75uu0CAwEAATANBgkqhkiG9w0BAQsFAAOBgQCmzfZ1ksLls+PwussGtr+vUOzHEhT3iYRNzwkByWzrS+8F+upEzTiBLfuWPqYDnULV8klAsNYjyAUS9MUuGh1qvmnOixSuwIHSC4/R4awzj2+YZddnL1yxrGCeVvQGbeEvlUz1SBjiGkVmBLrcfRXg58WihcmEny0Yij6yYksSOw==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

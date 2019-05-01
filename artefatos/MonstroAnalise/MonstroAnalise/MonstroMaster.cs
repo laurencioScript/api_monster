@@ -105,19 +105,23 @@ namespace MonstroAnalise
     class Tracos
     {
         public string traco;
+        public string descricao;
 
-        public Tracos(string value)
+        public Tracos(string value,string descricao)
         {
             this.traco = value;
+            this.descricao = descricao;
         }
     }
 
     class Acao
     {
         public string acao;
+        public string descricao;
 
-        public Acao(string value)
+        public Acao(string value,string descricao)
         {
+            this.descricao = descricao;
             this.acao = value;
         }
     }
@@ -135,19 +139,23 @@ namespace MonstroAnalise
     class Reacao
     {
         public string reacao;
+        public string descricao;
 
-        public Reacao(string value)
+        public Reacao(string value,string descricao)
         {
             this.reacao = value;
+            this.descricao = descricao;
         }
     }
 
     class Acao_lendaria
     {
         public string acao_lendaria;
+        public string descricao;
 
-        public Acao_lendaria(string value)
+        public Acao_lendaria(string value, string descricao)
         {
+            this.descricao = descricao;
             this.acao_lendaria = value;
         }
     }

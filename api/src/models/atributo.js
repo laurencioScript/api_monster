@@ -1,7 +1,7 @@
 const mongoose = require('./../database');
 
 
-const AtributosSchema = new mongoose.Schema({
+const AtributoSchema = new mongoose.Schema({
   forca: {
     type: Number,
     require: true,
@@ -34,6 +34,6 @@ const AtributosSchema = new mongoose.Schema({
  
 });
 
-const Atributo = mongoose.model('Atributo', AtributosSchema);
+const Atributo = mongoose.model('Atributo', AtributoSchema);
 
 module.exports = Atributo;
