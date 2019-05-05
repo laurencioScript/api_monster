@@ -1,27 +1,26 @@
-    const express = require('express');    
-    
-    const Monster = require('./../models/Monster');
-    const Atributo = require('./../models/Atributo');
-    const Deslocamento = require('./../models/Deslocamento');
-    const Traco = require('./../models/Tracos');
-    const Pericia = require('./../models/Pericia');
-    const Idioma = require('./../models/Idioma');
-    const Sentido = require('./../models/Sentido');
+    const Monster = require('./../models/monster');
+    const Atributo = require('./../models/atributo');
+    const Deslocamento = require('./../models/deslocamento');
+    const Traco = require('./../models/tracos');
+    const Pericia = require('./../models/pericia');
+    const Idioma = require('./../models/idioma');
+    const Sentido = require('./../models/sentido');
     const RT_Dano = require('./../models/resistencia_dano');
     const Teste_RT = require('./../models/teste_resistencia');
-    const Vulnerabilidade = require('./../models/Vulnerabilidade');
-    const Imunidade = require('./../models/Imunidade');
+    const Vulnerabilidade = require('./../models/vulnerabilidade');
+    const Imunidade = require('./../models/imunidade');
     const AcaoLendaria = require('./../models/acao_lendaria');
-    const Acao = require('./../models/Acao');
-    const Reacao = require('./../models/Reacao');
-    const Equipamento = require('./../models/Equipamento');
+    const Acao = require('./../models/acao');
+    const Reacao = require('./../models/reacao');
+    const Equipamento = require('./../models/equipamento');
+    
+    const express = require('express');   
     const router = express.Router();
-
+   
     router.post('/register', async (req,res)=>{
         try {
 
             const resultado = [];
-
             const monstros = req.body;
 
             for(var x =0;x<monstros.length;x++){
@@ -43,9 +42,7 @@
                 await monsterAtributos.save();
                 
                 await monsterDeslocamento.save();               
-
-                
-            
+          
                 if(tracos != undefined && tracos )
                     await Promise.all(tracos.map(async tracos => {
                         if(tracos['tracos'] != ""){
@@ -306,19 +303,6 @@
         return res.status(400).send({ error: 'Error loading monstro '+err });
         }
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     
     module.exports = app => app.use('/monster',router);
