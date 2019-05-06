@@ -2,7 +2,7 @@ const mongoose = require('./../database');
 
 
 const AcaoLendariaSchema = new mongoose.Schema({
-  acao_lendaria: {
+  tipo: {
     type:String,
     require: true,
   },

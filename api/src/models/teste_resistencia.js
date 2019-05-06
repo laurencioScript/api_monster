@@ -2,7 +2,7 @@ const mongoose = require('./../database');
 
 
 const Teste_RTSchema = new mongoose.Schema({
-  teste_resistencia: {
+  tipo: {
     type:String,
     require: true,
   },

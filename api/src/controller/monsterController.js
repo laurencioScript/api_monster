@@ -45,8 +45,8 @@
           
                 if(tracos != undefined && tracos )
                     await Promise.all(tracos.map(async tracos => {
-                        if(tracos['tracos'] != ""){
-                            const monsterTracos = new Traco({ ...tracos, monster: monster._id });
+                        if(tracos['tipo'] != ""){
+                            const monsterTracos = new Traco({ "tipo":tracos['tipo'],"descricao":tracos['descricao'], monster: monster._id });
                 
                             await monsterTracos.save();
                     
@@ -58,7 +58,7 @@
                 if(pericia != undefined)    
                     await Promise.all(pericia.map(async pericia => {
                         if(pericia['tipo'] != ""){
-                            const monsterPericia = new Pericia({ ...pericia, monster: monster._id });
+                            const monsterPericia = new Pericia({ "tipo":pericia['tipo'],"valor":pericia['valor'], monster: monster._id });
                 
                             await monsterPericia.save();
                     
@@ -70,8 +70,8 @@
                 if(idiomas != undefined)    
                     await Promise.all(idiomas.map(async idiomas => {
                         
-                        if(idiomas['idiomas'] != ""){
-                            const monsterIdioma = new Idioma({ ...idiomas, monster: monster._id });
+                        if(idiomas != ""){
+                            const monsterIdioma = new Idioma({ "idioma":idiomas, monster: monster._id });
                 
                             await monsterIdioma.save();
                     
@@ -85,7 +85,7 @@
                     await Promise.all(sentidos.map(async sentidos => {
                         
                         if(sentidos['tipo'] != ""){
-                            const monsterSentido = new Sentido({ ...sentidos, monster: monster._id });
+                            const monsterSentido = new Sentido({ "tipo":sentidos['tipo'],"valor":sentidos['valor'], monster: monster._id });
                 
                             await monsterSentido.save();
                     
@@ -96,8 +96,8 @@
         
                 if(resistencia_dano != undefined)
                     await Promise.all(resistencia_dano.map(async resistencia_dano => {
-                        if(resistencia_dano['resistencia_dano'] != ""){
-                            const monsterResistenciaDano = new RT_Dano({ ...resistencia_dano, monster: monster._id });
+                        if(resistencia_dano != ""){
+                            const monsterResistenciaDano = new RT_Dano({ "resistencia_dano":resistencia_dano, monster: monster._id });
                 
                             await monsterResistenciaDano.save();
                     
@@ -108,8 +108,8 @@
         
                 if(teste_resistencia != undefined)
                     await Promise.all(teste_resistencia.map(async teste_resistencia => {
-                        if(teste_resistencia['teste_resistencia'] != ""){
-                            const monsterTeste = new Teste_RT({ ...teste_resistencia, monster: monster._id });
+                        if(teste_resistencia['tipo'] != ""){
+                            const monsterTeste = new Teste_RT({ "tipo":teste_resistencia['tipo'],"valor":teste_resistencia['valor'], monster: monster._id });
                 
                             await monsterTeste.save();
                     
@@ -120,8 +120,8 @@
         
                 if(vulnerabilidades != undefined)
                     await Promise.all(vulnerabilidades.map(async vulnerabilidades => {
-                        if(vulnerabilidades['vulnerabilidade'] != ""){
-                            const monsterVulnerabilidades = new Vulnerabilidade({ ...vulnerabilidades, monster: monster._id });
+                        if(vulnerabilidades != ""){
+                            const monsterVulnerabilidades = new Vulnerabilidade({ "vulnerabilidade":vulnerabilidades, monster: monster._id });
                 
                             await monsterVulnerabilidades.save();
                     
@@ -132,8 +132,8 @@
         
                 if(imunidades != undefined)
                     await Promise.all(imunidades.map(async imunidades => {
-                        if(imunidades['imunidade'] != ""){
-                            const monsterImunidade = new Imunidade({ ...imunidades, monster: monster._id });
+                        if(imunidades != ""){
+                            const monsterImunidade = new Imunidade({ "imunidade":imunidades, monster: monster._id });
                 
                             await monsterImunidade.save();
                     
@@ -144,8 +144,8 @@
         
                 if(acao != undefined)
                     await Promise.all(acao.map(async acao => {
-                        if(acao['acao'] != ""){
-                            const monsterAcao = new Acao({ ...acao, monster: monster._id });
+                        if(acao['tipo'] != ""){
+                            const monsterAcao = new Acao({ "tipo":acao['tipo'],"descricao":acao['descricao'], monster: monster._id });
                 
                             await monsterAcao.save();
                     
@@ -156,8 +156,8 @@
         
                 if(acao_lendaria != undefined)
                     await Promise.all(acao_lendaria.map(async acao_lendaria => {
-                        if(acao_lendaria['acao_lendaria'] != ""){
-                            const monsterLendaria = new AcaoLendaria({ ...acao_lendaria, monster: monster._id });
+                        if(acao_lendaria['tipo'] != ""){
+                            const monsterLendaria = new AcaoLendaria({ "tipo":acaoLendaria['tipo'],"descricao":acaoLendaria['descricao'], monster: monster._id });
                 
                             await monsterLendaria.save();
                     
@@ -168,8 +168,8 @@
         
                 if(reacao != undefined)
                     await Promise.all(reacao.map(async reacao => {
-                        if(reacao['reacao'] != ""){
-                            const monsterReacao = new Reacao({ ...reacao, monster: monster._id });
+                        if(reacao['tipo'] != ""){
+                            const monsterReacao = new Reacao({"tipo":reacao['tipo'],"descricao":reacao['descricao'], monster: monster._id });
                 
                             await monsterReacao.save();
                     
@@ -180,9 +180,9 @@
         
                 if(equipamentos != undefined)
                     await Promise.all(equipamentos.map(async equipamentos => {
-                        if(equipamentos['equipamento'] != ""){
-                            const monsterEquipamento = new Equipamento({ ...equipamentos, monster: monster._id });
-                
+                        if(equipamentos != ""){
+                            const monsterEquipamento = new Equipamento({"equipamento":equipamentos, monster: monster._id });
+                           
                             await monsterEquipamento.save();
                     
                             monster.equipamentos.push(monsterEquipamento);
@@ -268,14 +268,12 @@
         }
     });
 
-    router.get('/getMonsterAtt=:forca,:destreza,:constituicao,:inteligencia,:sabedoria,:carisma', async (req, res) => {
+    router.get('/getAtrib=:forca,:destreza,:constituicao,:inteligencia,:sabedoria,:carisma', async (req, res) => {
         try {
             let obj = {};
-            //console.log(req.params)
-            
+
             if(req.params.forca != "" && req.params.forca != "null"){
                 obj['forca'] = parseInt(req.params.forca) ;
-                
             }
             if(req.params.destreza != "" && req.params.destreza != "null"){
                 obj['destreza'] = req.params.destreza;
@@ -292,17 +290,501 @@
             if(req.params.carisma != undefined && req.params.carisma != "null"){
                 obj['carisma'] = req.params.carisma;
             }
-        
-            const monstro = await Atributo.find({sabedoria:15});
-
-                console.log(monstro)
+            
+            let monsters = [];
+            
+            const atribs = await Atributo.find(obj);
     
-            return res.send({ "Count":monstro.length,"Monstros":monstro });
+            for(let cont=0;cont<atribs.length;cont++){
+                                
+                const monstro = await Monster.findById(atribs[cont]['monster']);
+                
+                monsters.push({
+                    "id":monstro['_id'],"nome":monstro['nome'],
+                    "Força":atribs[cont]['forca'],"Destreza":atribs[cont]['destreza'],"Escavacão":atribs[cont]['escavacao'],
+                    "Inteligencia":atribs[cont]['inteligencia'],"Sabedoria":atribs[cont]['sabedoria'],"Carisma":atribs[cont]['carisma']
+                })
+            }
 
+            return res.send({ "Count":monsters.length,"Monstros":monsters });
+  
         } catch (err) {
-        return res.status(400).send({ error: 'Error loading monstro '+err });
+            return res.status(400).send({ error: 'Error loading monstro '+err });
         }
     });
+    
+    router.get('/getDesloc=:escalada,:voo,:escavacao,:natacao,:deslocamento', async (req, res) => {
+        try {
+            let obj = {};
+
+            if(req.params.escalada != "" && req.params.escalada != "null"){
+                obj['escalada'] = parseInt(req.params.escalada) ;
+            }
+            if(req.params.voo != "" && req.params.voo != "null"){
+                obj['voo'] = req.params.voo;
+            }
+            if(req.params.escavacao != undefined && req.params.escavacao != "null"){
+                obj['escavacao'] = req.params.escavacao;
+            }
+            if(req.params.natacao != undefined && req.params.natacao != "null"){
+                obj['natacao'] = req.params.natacao;
+            }
+            if(req.params.deslocamento != undefined && req.params.deslocamento != "null"){
+                obj['deslocamento'] = parseInt(req.params.deslocamento);
+            }
+            
+            let monsters = [];
+            
+            const desloc = await Deslocamento.find(obj);
+    
+            for(let cont=0;cont<desloc.length;cont++){
+                                
+                const monstro = await Monster.findById(desloc[cont]['monster']);
+                
+                monsters.push({
+                    "id":monstro['_id'],"nome":monstro['nome'],
+                    "Escalada":desloc[cont]['escalada'],"Voo":desloc[cont]['voo'],"Escavacão":desloc[cont]['escavacao'],
+                    "Natação":desloc[cont]['natacao'],"Deslocamento":desloc[cont]['deslocamento']
+                })
+            }
+
+            return res.send({ "Count":monsters.length,"Monstros":monsters });
+  
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getDesloc '+err });
+        }
+    });
+
+    router.get('/getPericia=:parms1,:parms2,:parms3', async (req, res) => {
+        try {
+
+            let obj = {};   let i = 0;  let j = 0;  let monstro_output = []; let tempo =[];
+                   
+            if(req.params.parms1 != "" && req.params.parms1 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms1 ;                
+            }
+            if(req.params.parms2 != "" && req.params.parms2 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms2 ;
+            }
+            if(req.params.parms3 != "" && req.params.parms3 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms3 ;
+            }
+
+            
+            const monstro_input = await Monster.find().populate(['Monster','pericia']);
+
+            for(let cont=0;cont<monstro_input.length;cont++){
+                                
+                for(let x=0;x<monstro_input[cont]['pericia'].length;x++){
+                    
+                    j = i;
+                    tempo.push({"tipo":monstro_input[cont]['pericia'][x]['tipo'],"bonus":monstro_input[cont]['pericia'][x]['valor']});
+                    if(obj['parms1'] != undefined && monstro_input[cont]['pericia'][x]['tipo'] == obj['parms1'] )
+                        j--;
+                    
+                    else if(obj['parms2'] != undefined && monstro_input[cont]['pericia'][x]['tipo'] == obj['parms2'])
+                        j--;
+                    
+                    else if(obj['parms3'] != undefined && monstro_input[cont]['pericia'][x]['tipo'] == obj['parms3'])
+                        j--;
+                    
+                    if(j === 0)
+                        monstro_output.push({"id":monstro_input[cont]['_id'],"nome":monstro_input[cont]['nome'],"pericias":tempo});
+                    
+                }
+                    
+            };
+
+            return res.send({ "Count":monstro_output.length,"Monstros":monstro_output });
+  
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getPericia '+err });
+        }
+    });
+
+    router.get('/getIdioma=:parms1,:parms2,:parms3', async (req, res) => {
+        try {
+
+            let obj = {};   let i = 0;  let j = 0;  let monstro_output = []; let tempo =[];
+                   
+            if(req.params.parms1 != "" && req.params.parms1 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms1 ;                
+            }
+            if(req.params.parms2 != "" && req.params.parms2 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms2 ;
+            }
+            if(req.params.parms3 != "" && req.params.parms3 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms3 ;
+            }
+        
+            
+            const monstro_input = await Monster.find().populate(['Monster','idiomas']);
+            
+            for(let cont=0;cont < monstro_input.length;cont++){
+                
+                tempo = []         
+                
+                for(let x=0;x<monstro_input[cont]['idiomas'].length;x++){
+                    j = i;
+                   
+                    tempo.push({"idioma":monstro_input[cont]['idiomas'][x]['idioma']});
+                    
+                    if(obj['parms1'] != undefined && monstro_input[cont]['idiomas'][x]['idioma'] == obj['parms1'] )
+                    {
+                        
+                        j--;
+                    }
+                    if(obj['parms2'] != undefined && monstro_input[cont]['idiomas'][x]['idioma'] == obj['parms2'])
+                    {
+                        j--;
+                    }
+                    if(obj['parms3'] != undefined && monstro_input[cont]['idiomas'][x]['idioma'] == obj['parms3'])
+                    {
+                        j--;
+                    }
+                    if(j === 0)
+                    {
+                        
+                        monstro_output.push({"id":monstro_input[cont]['_id'],"nome":monstro_input[cont]['nome'],"idiomas":tempo});
+                    }
+                    
+                        
+                }
+                    
+            };
+
+            return res.send({ "Count":monstro_output.length,"Monstros":monstro_output });
+  
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getPericia '+err });
+        }
+    });
+
+    router.get('/getSentido=:parms1,:parms2,:parms3', async (req, res) => {
+        try {
+
+            let obj = {};   let i = 0;  let j = 0;  let monstro_output = []; let tempo =[];
+                   
+            if(req.params.parms1 != "" && req.params.parms1 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms1 ;                
+            }
+            if(req.params.parms2 != "" && req.params.parms2 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms2 ;
+            }
+            if(req.params.parms3 != "" && req.params.parms3 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms3 ;
+            }
+                 
+            const monstro_input = await Monster.find().populate(['Monster','sentidos']);
+            
+            for(let cont=0;cont < monstro_input.length;cont++){
+                
+                tempo = []         
+                
+                for(let x=0;x<monstro_input[cont]['sentidos'].length;x++){
+                    j = i;
+                   
+                    tempo.push({"tipo":monstro_input[cont]['sentidos'][x]['tipo'],"alcance":monstro_input[cont]['sentidos'][x]['valor']});
+                    
+                    if(obj['parms1'] != undefined && monstro_input[cont]['sentidos'][x]['tipo'] == obj['parms1'] )
+                    {
+                        
+                        j--;
+                    }
+                    if(obj['parms2'] != undefined && monstro_input[cont]['sentidos'][x]['tipo'] == obj['parms2'])
+                    {
+                        j--;
+                    }
+                    if(obj['parms3'] != undefined && monstro_input[cont]['sentidos'][x]['tipo'] == obj['parms3'])
+                    {
+                        j--;
+                    }
+                    if(j === 0)
+                    {
+                        
+                        monstro_output.push({"id":monstro_input[cont]['_id'],"nome":monstro_input[cont]['nome'],"sentidos":tempo});
+                    }
+                    
+                        
+                }
+                    
+            };
+
+            return res.send({ "Count":monstro_output.length,"Monstros":monstro_output });
+  
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getPericia '+err });
+        }
+    });
+
+    router.get('/getResistenciaDano=:parms1,:parms2,:parms3', async (req, res) => {
+        try {
+
+            let obj = {};   let i = 0;  let j = 0;  let monstro_output = []; let tempo =[];
+                   
+            if(req.params.parms1 != "" && req.params.parms1 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms1 ;                
+            }
+            if(req.params.parms2 != "" && req.params.parms2 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms2 ;
+            }
+            if(req.params.parms3 != "" && req.params.parms3 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms3 ;
+            }
+        
+            
+            const monstro_input = await Monster.find(null,{nome:1,_id:1}).populate(['Monster','resistencia_dano']);
+         
+            for(let cont=0;cont < monstro_input.length;cont++){
+                
+                tempo = []         
+                
+                for(let x=0;x<monstro_input[cont]['resistencia_dano'].length;x++){
+                    j = i;
+                    
+                    
+                    tempo.push(monstro_input[cont]['resistencia_dano'][x]['resistencia_dano']);
+                    
+                    if(obj['parms1'] != undefined && monstro_input[cont]['resistencia_dano'][x]['resistencia_dano'] == obj['parms1'] )
+                    {
+                        
+                        j--;
+                    }
+                    if(obj['parms2'] != undefined && monstro_input[cont]['resistencia_dano'][x]['resistencia_dano'] == obj['parms2'])
+                    {
+                        j--;
+                    }
+                    if(obj['parms3'] != undefined && monstro_input[cont]['resistencia_dano'][x]['resistencia_dano'] == obj['parms3'])
+                    {
+                        j--;
+                    }
+                    if(j === 0)
+                    {
+                        
+                        monstro_output.push({"id":monstro_input[cont]['_id'],"nome":monstro_input[cont]['nome'],"resistencia_dano":tempo});
+                    }
+                    
+                        
+                }
+                    
+            };
+
+            return res.send({ "Count":monstro_output.length,"Monstros":monstro_output });
+  
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getPericia '+err });
+        }
+    });
+
+    router.get('/getTesteResistencia=:parms1,:parms2,:parms3', async (req, res) => {
+        try {
+
+            let obj = {};   let i = 0;  let j = 0;  let monstro_output = []; let tempo =[];
+                   
+            if(req.params.parms1 != "" && req.params.parms1 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms1 ;                
+            }
+            if(req.params.parms2 != "" && req.params.parms2 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms2 ;
+            }
+            if(req.params.parms3 != "" && req.params.parms3 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms3 ;
+            }
+        
+            
+            const monstro_input = await Monster.find().populate(['Monster','teste_resistencia']);
+            
+            for(let cont=0;cont < monstro_input.length;cont++){
+                
+                tempo = []         
+                
+                for(let x=0;x<monstro_input[cont]['teste_resistencia'].length;x++){
+                    j = i;
+                   
+                    tempo.push({"resistencia":monstro_input[cont]['teste_resistencia'][x]['tipo'],"bonus":monstro_input[cont]['teste_resistencia'][x]['valor']});
+                    
+                    if(obj['parms1'] != undefined && monstro_input[cont]['teste_resistencia'][x]['tipo'] == obj['parms1'] )
+                    {
+                        
+                        j--;
+                    }
+                    if(obj['parms2'] != undefined && monstro_input[cont]['teste_resistencia'][x]['tipo'] == obj['parms2'])
+                    {
+                        j--;
+                    }
+                    if(obj['parms3'] != undefined && monstro_input[cont]['teste_resistencia'][x]['tipo'] == obj['parms3'])
+                    {
+                        j--;
+                    }
+                    if(j === 0)
+                    {
+                        
+                        monstro_output.push({"id":monstro_input[cont]['_id'],"nome":monstro_input[cont]['nome'],"teste_resistencia":tempo});
+                    }
+                    
+                        
+                }
+                    
+            };
+
+            return res.send({ "Count":monstro_output.length,"Monstros":monstro_output });
+  
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getPericia '+err });
+        }
+    });
+
+    router.get('/getImunidade=:parms1,:parms2,:parms3', async (req, res) => {
+        try {
+
+            let obj = {};   let i = 0;  let j = 0;  let monstro_output = []; let tempo =[];
+                   
+            if(req.params.parms1 != "" && req.params.parms1 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms1 ;                
+            }
+            if(req.params.parms2 != "" && req.params.parms2 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms2 ;
+            }
+            if(req.params.parms3 != "" && req.params.parms3 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms3 ;
+            }
+        
+            
+            const monstro_input = await Monster.find().populate(['Monster','imunidades']);
+            
+            for(let cont=0;cont < monstro_input.length;cont++){
+                
+                tempo = []         
+                
+                for(let x=0;x<monstro_input[cont]['imunidades'].length;x++){
+                    j = i;
+                   
+                    tempo.push(monstro_input[cont]['imunidades'][x]['imunidade']);
+                    
+                    if(obj['parms1'] != undefined && monstro_input[cont]['imunidades'][x]['imunidade'] == obj['parms1'] )
+                    {
+                        
+                        j--;
+                    }
+                    if(obj['parms2'] != undefined && monstro_input[cont]['imunidades'][x]['imunidade'] == obj['parms2'])
+                    {
+                        j--;
+                    }
+                    if(obj['parms3'] != undefined && monstro_input[cont]['imunidades'][x]['imunidade'] == obj['parms3'])
+                    {
+                        j--;
+                    }
+                    if(j === 0)
+                    {
+                        
+                        monstro_output.push({"id":monstro_input[cont]['_id'],"nome":monstro_input[cont]['nome'],"imunidades":tempo});
+                    }
+                    
+                        
+                }
+                    
+            };
+
+            return res.send({ "Count":monstro_output.length,"Monstros":monstro_output });
+  
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getPericia '+err });
+        }
+    });
+
+    router.get('/getEquipamento=:parms1,:parms2,:parms3', async (req, res) => {
+        try {
+
+            let obj = {};   let i = 0;  let j = 0;  let monstro_output = []; let tempo =[];
+                   
+            if(req.params.parms1 != "" && req.params.parms1 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms1 ;                
+            }
+            if(req.params.parms2 != "" && req.params.parms2 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms2 ;
+            }
+            if(req.params.parms3 != "" && req.params.parms3 != "null"){
+                i++;
+                obj['parms'+i] = req.params.parms3 ;
+            }
+        
+            
+            const monstro_input = await Monster.find().populate(['Monster','equipamentos']);
+            
+            for(let cont=0;cont < monstro_input.length;cont++){
+                
+                tempo = []         
+                
+                for(let x=0;x<monstro_input[cont]['equipamentos'].length;x++){
+                    j = i;
+                   
+                    tempo.push(monstro_input[cont]['equipamentos'][x]['equipamento']);
+                    
+                    if(obj['parms1'] != undefined && monstro_input[cont]['equipamentos'][x]['equipamento'] == obj['parms1'] )
+                    {
+                        
+                        j--;
+                    }
+                    if(obj['parms2'] != undefined && monstro_input[cont]['equipamentos'][x]['equipamento'] == obj['parms2'])
+                    {
+                        j--;
+                    }
+                    if(obj['parms3'] != undefined && monstro_input[cont]['equipamentos'][x]['equipamento'] == obj['parms3'])
+                    {
+                        j--;
+                    }
+                    if(j === 0)
+                    {
+                        
+                        monstro_output.push({"id":monstro_input[cont]['_id'],"nome":monstro_input[cont]['nome'],"equipamentos":tempo});
+                    }
+                    
+                        
+                }
+                    
+            };
+
+            return res.send({ "Count":monstro_output.length,"Monstros":monstro_output });
+  
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getPericia '+err });
+        }
+    });
+
+     /*
+        getAllTipo()
+        getAllSentidos()
+        getAllPericias()
+        getAllImunidades()
+        getAllAçõesLendarias()
+        getAllVulnerabilidades()
+        getAllIdiomas()
+        getALlReacoes()
+        getAllEquipamentos()
+        getAllResistenciaDano() 
+    
+    */
+
 
     
     module.exports = app => app.use('/monster',router);

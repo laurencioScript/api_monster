@@ -1,7 +1,7 @@
 const clean = require('./clean');
 const show = require('./show');
 
-const path = ['gabriel','danilo'];
+const path = ['gabriel','danilo','lucas'];
 
 function readJson(path){
     const fs = require("fs");
@@ -38,9 +38,8 @@ async function main(){
     let monstros = load();
     monstros = clean.convert(monstros);
     monstros = clean.clear(monstros);
-   
     writeJson(monstros);
-    console.log(monstros.length);
+    console.log(monstros.length+' monstros cadastrados');
     
 }
 

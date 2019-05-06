@@ -2,7 +2,7 @@ const mongoose = require('./../database');
 
 
 const ReacaoSchema = new mongoose.Schema({
-  reacao: {
+  tipo: {
     type:String,
     require: true,
   },

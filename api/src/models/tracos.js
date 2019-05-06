@@ -1,7 +1,7 @@
 const mongoose = require('./../database');
 
 const TracoSchema = new mongoose.Schema({
-  traco: {
+  tipo: {
     type:String,
     require: true,
   },

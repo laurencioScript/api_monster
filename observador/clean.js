@@ -211,8 +211,8 @@ function convert(monstros)
         monstro.tipo = monstros[cont]['tipo'];
         monstro.tamanho = monstros[cont]['tamanho'];
         monstro.tendencia = monstros[cont]['tendencia'];
-        monstro.pontosDeVida = monstros[cont]['pontosDeVida'];
-        monstro.classeArmadura = monstros[cont]['classeArmadura'];
+        monstro.pv = monstros[cont]['pontosDeVida'];
+        monstro.ca= monstros[cont]['classeArmadura'];
 
         monstro.atributo =  monstros[cont]['atributo'];
         monstro.deslocamento = monstros[cont]['deslocamento'];

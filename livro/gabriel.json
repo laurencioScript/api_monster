@@ -9719,7 +9719,7 @@
   {
     "desafio": "1",
     "xp": 200,
-    "nome": "dragão-fada",
+    "nome": "dragão-fada vermelho",
     "tipo": "dragão",
     "tamanho": "miúdo",
     "tendencia": "CB",
@@ -9766,7 +9766,502 @@
       ""
     ],
     "tracos_especiais": [
-      "invisibilidade superior. com uma ação bônus, o dragão pode ficarmagicamente invisível até sua concentração acabar (como seestivesse se concentrando em uma magia). qualquerequipamento que o dragão esteja vestindo ou carregando ficainvisível com ele.resistência à magia. o dragão possui vantagem nos testes deresistência contra magias e outros efeitos mágicos.telepatia limitada. usando telepatia, o dragão pode secomunicar magicamente com qualquer outro dragão-fada a até 18metros dele.conjuração inata. a habilidade de conjuração do dragão écarisma (cd de resistência de magia 13). ele pode conjurar umaquantidade de magia, inatamente, sem necessidade decomponentes materiais. conforme o dragão envelhece e mudade cor, ele ganha magias adicionais, como mostrado na tabelaabaixo.vermelho, 1/dia cada: globos de luz, ilusão menor, mãos mágicaslaranja, 1/dia: leque cromáticoamarelo, 1/dia: reflexosverde, 1/dia: sugestãoazul, 1/dia: imagem maioranil, 1/dia: terreno alucinógenovioleta, 1/dia: metamorfose"
+      "invisibilidade superior. com uma ação bônus, o dragão pode ficar magicamente invisível até sua concentração acabar (como seestivesse se concentrando em uma magia). qualquer equipamento que o dragão esteja vestindo ou carregando fica invisível com ele.",
+      "resistência à magia. o dragão possui vantagem nos testes deresistência contra magias e outros efeitos mágicos.",
+      "telepatia limitada. usando telepatia, o dragão pode secomunicar magicamente com qualquer outro dragão-fada a até 18metros dele.",
+      "conjuração inata. a habilidade de conjuração do dragão é carisma (cd de resistência de magia 13). ele pode conjurar umaquantidade de magia, inatamente, sem necessidade decomponentes materiais. conforme o dragão envelhece e mudade cor, ele ganha magias adicionais, como mostrado na tabela abaixo.vermelho, 1/dia cada: globos de luz, ilusão menor, mãos mágicaslaranja, 1/dia: leque cromáticoamarelo, 1/dia: reflexosverde, 1/dia: sugestãoazul, 1/dia: imagem maioranil, 1/dia: terreno alucinógenovioleta, 1/dia: metamorfose"
+    ],
+    "acao": [
+      "mordida. ataque corpo-a-corpo com arma: +7 para atingir,alcance 1,5 m, um alvo. acerto: 1 de dano perfurante.",
+      "sopro de euforia (recarrega 5–6). o dragão expele uma lufadade gás eufórico em uma criatura a até 1,5 metro dele. o alvodeve ser bem sucedido num teste de resistência de sabedoriacd 11 ou, por 1 minuto, não poderá realizar reações e devejogar um d6 no início de cada um dos turnos dele paradeterminar seu comportamento durante o turno:1–4. o alvo não realiza nenhuma ação ou reação e usa todo oseu movimento para se deslocar em uma direção aleatória.5–6. o alvo não se move e a única coisa que ele pode fazer noturno dele é realizar um teste de resistência de sabedoria cd 11,terminando o efeito sobre se, caso obtenha sucesso."
+    ],
+    "vulnerabilidades": [
+      ""
+    ],
+    "sentidos": [
+      {
+        "tipo": "visão no escuro",
+        "valor": 18.0
+      },
+      {
+        "tipo": "percepção passiva",
+        "valor": 13.0
+      }
+    ],
+    "reacoes": [
+      ""
+    ],
+    "equipamentos": [
+      ""
+    ],
+    "acaoLendarias": [
+      ""
+    ]
+  },
+  {
+    "desafio": "1",
+    "xp": 200,
+    "nome": "dragão-fada laranja",
+    "tipo": "dragão",
+    "tamanho": "miúdo",
+    "tendencia": "CB",
+    "pontosDeVida": "4D4 + 4",
+    "classeArmadura": 15,
+    "atributo": {
+      "forca": 3.0,
+      "destreza": 20.0,
+      "constituicao": 13.0,
+      "inteligencia": 14.0,
+      "sabedoria": 12.0,
+      "carisma": 16.0
+    },
+    "deslocamento": {
+      "escalada": 0.0,
+      "voo": 18.0,
+      "escavacao": 0.0,
+      "deslocamento": 3.0,
+      "natacao": 0.0
+    },
+    "idiomas": [
+      "dracônico",
+      "silvestre"
+    ],
+    "resistencia_dano": [
+      ""
+    ],
+    "teste_resistencia": [],
+    "pericia": [
+      {
+        "tipo": "arcanismo",
+        "valor": 4
+      },
+      {
+        "tipo": "furtividade",
+        "valor": 7
+      },
+      {
+        "tipo": "percepção",
+        "valor": 3
+      }
+    ],
+    "imunidades": [
+      ""
+    ],
+    "tracos_especiais": [
+      "invisibilidade superior. com uma ação bônus, o dragão pode ficar magicamente invisível até sua concentração acabar (como seestivesse se concentrando em uma magia). qualquer equipamento que o dragão esteja vestindo ou carregando fica invisível com ele.",
+      "resistência à magia. o dragão possui vantagem nos testes deresistência contra magias e outros efeitos mágicos.",
+      "telepatia limitada. usando telepatia, o dragão pode secomunicar magicamente com qualquer outro dragão-fada a até 18metros dele.",
+      "conjuração inata. a habilidade de conjuração do dragão é carisma (cd de resistência de magia 13). ele pode conjurar umaquantidade de magia, inatamente, sem necessidade decomponentes materiais. conforme o dragão envelhece e mudade cor, ele ganha magias adicionais, como mostrado na tabela abaixo.vermelho, 1/dia cada: globos de luz, ilusão menor, mãos mágicaslaranja, 1/dia: leque cromáticoamarelo, 1/dia: reflexosverde, 1/dia: sugestãoazul, 1/dia: imagem maioranil, 1/dia: terreno alucinógenovioleta, 1/dia: metamorfose"
+    ],
+    "acao": [
+      "mordida. ataque corpo-a-corpo com arma: +7 para atingir,alcance 1,5 m, um alvo. acerto: 1 de dano perfurante.",
+      "sopro de euforia (recarrega 5–6). o dragão expele uma lufadade gás eufórico em uma criatura a até 1,5 metro dele. o alvodeve ser bem sucedido num teste de resistência de sabedoriacd 11 ou, por 1 minuto, não poderá realizar reações e devejogar um d6 no início de cada um dos turnos dele paradeterminar seu comportamento durante o turno:1–4. o alvo não realiza nenhuma ação ou reação e usa todo oseu movimento para se deslocar em uma direção aleatória.5–6. o alvo não se move e a única coisa que ele pode fazer noturno dele é realizar um teste de resistência de sabedoria cd 11,terminando o efeito sobre se, caso obtenha sucesso."
+    ],
+    "vulnerabilidades": [
+      ""
+    ],
+    "sentidos": [
+      {
+        "tipo": "visão no escuro",
+        "valor": 18.0
+      },
+      {
+        "tipo": "percepção passiva",
+        "valor": 13.0
+      }
+    ],
+    "reacoes": [
+      ""
+    ],
+    "equipamentos": [
+      ""
+    ],
+    "acaoLendarias": [
+      ""
+    ]
+  },
+  {
+    "desafio": "1",
+    "xp": 200,
+    "nome": "dragão-fada amarelo",
+    "tipo": "dragão",
+    "tamanho": "miúdo",
+    "tendencia": "CB",
+    "pontosDeVida": "4D4 + 4",
+    "classeArmadura": 15,
+    "atributo": {
+      "forca": 3.0,
+      "destreza": 20.0,
+      "constituicao": 13.0,
+      "inteligencia": 14.0,
+      "sabedoria": 12.0,
+      "carisma": 16.0
+    },
+    "deslocamento": {
+      "escalada": 0.0,
+      "voo": 18.0,
+      "escavacao": 0.0,
+      "deslocamento": 3.0,
+      "natacao": 0.0
+    },
+    "idiomas": [
+      "dracônico",
+      "silvestre"
+    ],
+    "resistencia_dano": [
+      ""
+    ],
+    "teste_resistencia": [],
+    "pericia": [
+      {
+        "tipo": "arcanismo",
+        "valor": 4
+      },
+      {
+        "tipo": "furtividade",
+        "valor": 7
+      },
+      {
+        "tipo": "percepção",
+        "valor": 3
+      }
+    ],
+    "imunidades": [
+      ""
+    ],
+    "tracos_especiais": [
+      "invisibilidade superior. com uma ação bônus, o dragão pode ficar magicamente invisível até sua concentração acabar (como seestivesse se concentrando em uma magia). qualquer equipamento que o dragão esteja vestindo ou carregando fica invisível com ele.",
+      "resistência à magia. o dragão possui vantagem nos testes deresistência contra magias e outros efeitos mágicos.",
+      "telepatia limitada. usando telepatia, o dragão pode secomunicar magicamente com qualquer outro dragão-fada a até 18metros dele.",
+      "conjuração inata. a habilidade de conjuração do dragão é carisma (cd de resistência de magia 13). ele pode conjurar umaquantidade de magia, inatamente, sem necessidade decomponentes materiais. conforme o dragão envelhece e mudade cor, ele ganha magias adicionais, como mostrado na tabela abaixo.vermelho, 1/dia cada: globos de luz, ilusão menor, mãos mágicaslaranja, 1/dia: leque cromáticoamarelo, 1/dia: reflexosverde, 1/dia: sugestãoazul, 1/dia: imagem maioranil, 1/dia: terreno alucinógenovioleta, 1/dia: metamorfose"
+    ],
+    "acao": [
+      "mordida. ataque corpo-a-corpo com arma: +7 para atingir,alcance 1,5 m, um alvo. acerto: 1 de dano perfurante.",
+      "sopro de euforia (recarrega 5–6). o dragão expele uma lufadade gás eufórico em uma criatura a até 1,5 metro dele. o alvodeve ser bem sucedido num teste de resistência de sabedoriacd 11 ou, por 1 minuto, não poderá realizar reações e devejogar um d6 no início de cada um dos turnos dele paradeterminar seu comportamento durante o turno:1–4. o alvo não realiza nenhuma ação ou reação e usa todo oseu movimento para se deslocar em uma direção aleatória.5–6. o alvo não se move e a única coisa que ele pode fazer noturno dele é realizar um teste de resistência de sabedoria cd 11,terminando o efeito sobre se, caso obtenha sucesso."
+    ],
+    "vulnerabilidades": [
+      ""
+    ],
+    "sentidos": [
+      {
+        "tipo": "visão no escuro",
+        "valor": 18.0
+      },
+      {
+        "tipo": "percepção passiva",
+        "valor": 13.0
+      }
+    ],
+    "reacoes": [
+      ""
+    ],
+    "equipamentos": [
+      ""
+    ],
+    "acaoLendarias": [
+      ""
+    ]
+  },
+  {
+    "desafio": "2",
+    "xp": 450,
+    "nome": "dragão-fada verde",
+    "tipo": "dragão",
+    "tamanho": "miúdo",
+    "tendencia": "CB",
+    "pontosDeVida": "4D4 + 4",
+    "classeArmadura": 15,
+    "atributo": {
+      "forca": 3.0,
+      "destreza": 20.0,
+      "constituicao": 13.0,
+      "inteligencia": 14.0,
+      "sabedoria": 12.0,
+      "carisma": 16.0
+    },
+    "deslocamento": {
+      "escalada": 0.0,
+      "voo": 18.0,
+      "escavacao": 0.0,
+      "deslocamento": 3.0,
+      "natacao": 0.0
+    },
+    "idiomas": [
+      "dracônico",
+      "silvestre"
+    ],
+    "resistencia_dano": [
+      ""
+    ],
+    "teste_resistencia": [],
+    "pericia": [
+      {
+        "tipo": "arcanismo",
+        "valor": 4
+      },
+      {
+        "tipo": "furtividade",
+        "valor": 7
+      },
+      {
+        "tipo": "percepção",
+        "valor": 3
+      }
+    ],
+    "imunidades": [
+      ""
+    ],
+    "tracos_especiais": [
+      "invisibilidade superior. com uma ação bônus, o dragão pode ficar magicamente invisível até sua concentração acabar (como seestivesse se concentrando em uma magia). qualquer equipamento que o dragão esteja vestindo ou carregando fica invisível com ele.",
+      "resistência à magia. o dragão possui vantagem nos testes deresistência contra magias e outros efeitos mágicos.",
+      "telepatia limitada. usando telepatia, o dragão pode secomunicar magicamente com qualquer outro dragão-fada a até 18metros dele.",
+      "conjuração inata. a habilidade de conjuração do dragão é carisma (cd de resistência de magia 13). ele pode conjurar umaquantidade de magia, inatamente, sem necessidade decomponentes materiais. conforme o dragão envelhece e mudade cor, ele ganha magias adicionais, como mostrado na tabela abaixo.vermelho, 1/dia cada: globos de luz, ilusão menor, mãos mágicaslaranja, 1/dia: leque cromáticoamarelo, 1/dia: reflexosverde, 1/dia: sugestãoazul, 1/dia: imagem maioranil, 1/dia: terreno alucinógenovioleta, 1/dia: metamorfose"
+    ],
+    "acao": [
+      "mordida. ataque corpo-a-corpo com arma: +7 para atingir,alcance 1,5 m, um alvo. acerto: 1 de dano perfurante.",
+      "sopro de euforia (recarrega 5–6). o dragão expele uma lufadade gás eufórico em uma criatura a até 1,5 metro dele. o alvodeve ser bem sucedido num teste de resistência de sabedoriacd 11 ou, por 1 minuto, não poderá realizar reações e devejogar um d6 no início de cada um dos turnos dele paradeterminar seu comportamento durante o turno:1–4. o alvo não realiza nenhuma ação ou reação e usa todo oseu movimento para se deslocar em uma direção aleatória.5–6. o alvo não se move e a única coisa que ele pode fazer noturno dele é realizar um teste de resistência de sabedoria cd 11,terminando o efeito sobre se, caso obtenha sucesso."
+    ],
+    "vulnerabilidades": [
+      ""
+    ],
+    "sentidos": [
+      {
+        "tipo": "visão no escuro",
+        "valor": 18.0
+      },
+      {
+        "tipo": "percepção passiva",
+        "valor": 13.0
+      }
+    ],
+    "reacoes": [
+      ""
+    ],
+    "equipamentos": [
+      ""
+    ],
+    "acaoLendarias": [
+      ""
+    ]
+  },
+  {
+    "desafio": "2",
+    "xp": 450,
+    "nome": "dragão-fada azul",
+    "tipo": "dragão",
+    "tamanho": "miúdo",
+    "tendencia": "CB",
+    "pontosDeVida": "4D4 + 4",
+    "classeArmadura": 15,
+    "atributo": {
+      "forca": 3.0,
+      "destreza": 20.0,
+      "constituicao": 13.0,
+      "inteligencia": 14.0,
+      "sabedoria": 12.0,
+      "carisma": 16.0
+    },
+    "deslocamento": {
+      "escalada": 0.0,
+      "voo": 18.0,
+      "escavacao": 0.0,
+      "deslocamento": 3.0,
+      "natacao": 0.0
+    },
+    "idiomas": [
+      "dracônico",
+      "silvestre"
+    ],
+    "resistencia_dano": [
+      ""
+    ],
+    "teste_resistencia": [],
+    "pericia": [
+      {
+        "tipo": "arcanismo",
+        "valor": 4
+      },
+      {
+        "tipo": "furtividade",
+        "valor": 7
+      },
+      {
+        "tipo": "percepção",
+        "valor": 3
+      }
+    ],
+    "imunidades": [
+      ""
+    ],
+    "tracos_especiais": [
+      "invisibilidade superior. com uma ação bônus, o dragão pode ficar magicamente invisível até sua concentração acabar (como seestivesse se concentrando em uma magia). qualquer equipamento que o dragão esteja vestindo ou carregando fica invisível com ele.",
+      "resistência à magia. o dragão possui vantagem nos testes deresistência contra magias e outros efeitos mágicos.",
+      "telepatia limitada. usando telepatia, o dragão pode secomunicar magicamente com qualquer outro dragão-fada a até 18metros dele.",
+      "conjuração inata. a habilidade de conjuração do dragão é carisma (cd de resistência de magia 13). ele pode conjurar umaquantidade de magia, inatamente, sem necessidade decomponentes materiais. conforme o dragão envelhece e mudade cor, ele ganha magias adicionais, como mostrado na tabela abaixo.vermelho, 1/dia cada: globos de luz, ilusão menor, mãos mágicaslaranja, 1/dia: leque cromáticoamarelo, 1/dia: reflexosverde, 1/dia: sugestãoazul, 1/dia: imagem maioranil, 1/dia: terreno alucinógenovioleta, 1/dia: metamorfose"
+    ],
+    "acao": [
+      "mordida. ataque corpo-a-corpo com arma: +7 para atingir,alcance 1,5 m, um alvo. acerto: 1 de dano perfurante.",
+      "sopro de euforia (recarrega 5–6). o dragão expele uma lufadade gás eufórico em uma criatura a até 1,5 metro dele. o alvodeve ser bem sucedido num teste de resistência de sabedoriacd 11 ou, por 1 minuto, não poderá realizar reações e devejogar um d6 no início de cada um dos turnos dele paradeterminar seu comportamento durante o turno:1–4. o alvo não realiza nenhuma ação ou reação e usa todo oseu movimento para se deslocar em uma direção aleatória.5–6. o alvo não se move e a única coisa que ele pode fazer noturno dele é realizar um teste de resistência de sabedoria cd 11,terminando o efeito sobre se, caso obtenha sucesso."
+    ],
+    "vulnerabilidades": [
+      ""
+    ],
+    "sentidos": [
+      {
+        "tipo": "visão no escuro",
+        "valor": 18.0
+      },
+      {
+        "tipo": "percepção passiva",
+        "valor": 13.0
+      }
+    ],
+    "reacoes": [
+      ""
+    ],
+    "equipamentos": [
+      ""
+    ],
+    "acaoLendarias": [
+      ""
+    ]
+  },
+  {
+    "desafio": "2",
+    "xp": 450,
+    "nome": "dragão-fada anil",
+    "tipo": "dragão",
+    "tamanho": "miúdo",
+    "tendencia": "CB",
+    "pontosDeVida": "4D4 + 4",
+    "classeArmadura": 15,
+    "atributo": {
+      "forca": 3.0,
+      "destreza": 20.0,
+      "constituicao": 13.0,
+      "inteligencia": 14.0,
+      "sabedoria": 12.0,
+      "carisma": 16.0
+    },
+    "deslocamento": {
+      "escalada": 0.0,
+      "voo": 18.0,
+      "escavacao": 0.0,
+      "deslocamento": 3.0,
+      "natacao": 0.0
+    },
+    "idiomas": [
+      "dracônico",
+      "silvestre"
+    ],
+    "resistencia_dano": [
+      ""
+    ],
+    "teste_resistencia": [],
+    "pericia": [
+      {
+        "tipo": "arcanismo",
+        "valor": 4
+      },
+      {
+        "tipo": "furtividade",
+        "valor": 7
+      },
+      {
+        "tipo": "percepção",
+        "valor": 3
+      }
+    ],
+    "imunidades": [
+      ""
+    ],
+    "tracos_especiais": [
+      "invisibilidade superior. com uma ação bônus, o dragão pode ficar magicamente invisível até sua concentração acabar (como seestivesse se concentrando em uma magia). qualquer equipamento que o dragão esteja vestindo ou carregando fica invisível com ele.",
+      "resistência à magia. o dragão possui vantagem nos testes deresistência contra magias e outros efeitos mágicos.",
+      "telepatia limitada. usando telepatia, o dragão pode secomunicar magicamente com qualquer outro dragão-fada a até 18metros dele.",
+      "conjuração inata. a habilidade de conjuração do dragão é carisma (cd de resistência de magia 13). ele pode conjurar umaquantidade de magia, inatamente, sem necessidade decomponentes materiais. conforme o dragão envelhece e mudade cor, ele ganha magias adicionais, como mostrado na tabela abaixo.vermelho, 1/dia cada: globos de luz, ilusão menor, mãos mágicaslaranja, 1/dia: leque cromáticoamarelo, 1/dia: reflexosverde, 1/dia: sugestãoazul, 1/dia: imagem maioranil, 1/dia: terreno alucinógenovioleta, 1/dia: metamorfose"
+    ],
+    "acao": [
+      "mordida. ataque corpo-a-corpo com arma: +7 para atingir,alcance 1,5 m, um alvo. acerto: 1 de dano perfurante.",
+      "sopro de euforia (recarrega 5–6). o dragão expele uma lufadade gás eufórico em uma criatura a até 1,5 metro dele. o alvodeve ser bem sucedido num teste de resistência de sabedoriacd 11 ou, por 1 minuto, não poderá realizar reações e devejogar um d6 no início de cada um dos turnos dele paradeterminar seu comportamento durante o turno:1–4. o alvo não realiza nenhuma ação ou reação e usa todo oseu movimento para se deslocar em uma direção aleatória.5–6. o alvo não se move e a única coisa que ele pode fazer noturno dele é realizar um teste de resistência de sabedoria cd 11,terminando o efeito sobre se, caso obtenha sucesso."
+    ],
+    "vulnerabilidades": [
+      ""
+    ],
+    "sentidos": [
+      {
+        "tipo": "visão no escuro",
+        "valor": 18.0
+      },
+      {
+        "tipo": "percepção passiva",
+        "valor": 13.0
+      }
+    ],
+    "reacoes": [
+      ""
+    ],
+    "equipamentos": [
+      ""
+    ],
+    "acaoLendarias": [
+      ""
+    ]
+  },
+  {
+    "desafio": "2",
+    "xp": 450,
+    "nome": "dragão-fada violeta",
+    "tipo": "dragão",
+    "tamanho": "miúdo",
+    "tendencia": "CB",
+    "pontosDeVida": "4D4 + 4",
+    "classeArmadura": 15,
+    "atributo": {
+      "forca": 3.0,
+      "destreza": 20.0,
+      "constituicao": 13.0,
+      "inteligencia": 14.0,
+      "sabedoria": 12.0,
+      "carisma": 16.0
+    },
+    "deslocamento": {
+      "escalada": 0.0,
+      "voo": 18.0,
+      "escavacao": 0.0,
+      "deslocamento": 3.0,
+      "natacao": 0.0
+    },
+    "idiomas": [
+      "dracônico",
+      "silvestre"
+    ],
+    "resistencia_dano": [
+      ""
+    ],
+    "teste_resistencia": [],
+    "pericia": [
+      {
+        "tipo": "arcanismo",
+        "valor": 4
+      },
+      {
+        "tipo": "furtividade",
+        "valor": 7
+      },
+      {
+        "tipo": "percepção",
+        "valor": 3
+      }
+    ],
+    "imunidades": [
+      ""
+    ],
+    "tracos_especiais": [
+      "invisibilidade superior. com uma ação bônus, o dragão pode ficar magicamente invisível até sua concentração acabar (como seestivesse se concentrando em uma magia). qualquer equipamento que o dragão esteja vestindo ou carregando fica invisível com ele.",
+      "resistência à magia. o dragão possui vantagem nos testes deresistência contra magias e outros efeitos mágicos.",
+      "telepatia limitada. usando telepatia, o dragão pode secomunicar magicamente com qualquer outro dragão-fada a até 18metros dele.",
+      "conjuração inata. a habilidade de conjuração do dragão é carisma (cd de resistência de magia 13). ele pode conjurar umaquantidade de magia, inatamente, sem necessidade decomponentes materiais. conforme o dragão envelhece e mudade cor, ele ganha magias adicionais, como mostrado na tabela abaixo.vermelho, 1/dia cada: globos de luz, ilusão menor, mãos mágicaslaranja, 1/dia: leque cromáticoamarelo, 1/dia: reflexosverde, 1/dia: sugestãoazul, 1/dia: imagem maioranil, 1/dia: terreno alucinógenovioleta, 1/dia: metamorfose"
     ],
     "acao": [
       "mordida. ataque corpo-a-corpo com arma: +7 para atingir,alcance 1,5 m, um alvo. acerto: 1 de dano perfurante.",

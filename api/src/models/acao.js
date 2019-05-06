@@ -1,7 +1,7 @@
 const mongoose = require('./../database');
 
 const AcaoSchema = new mongoose.Schema({
-  acao: {
+  tipo: {
     type:String,
     require: true,
   },
