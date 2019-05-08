@@ -38,6 +38,7 @@ async function main(){
     let monstros = load();
     monstros = clean.convert(monstros);
     monstros = clean.clear(monstros);
+    show.showImuni(monstros);
     writeJson(monstros);
     console.log(monstros.length+' monstros cadastrados');
     

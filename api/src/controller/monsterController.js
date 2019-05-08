@@ -14,20 +14,26 @@
     const Reacao = require('./../models/reacao');
     const Equipamento = require('./../models/equipamento');
     
+    const mongoose = require('mongoose');
+
     const express = require('express');   
     const router = express.Router();
    
+
+    // Serve para inserir os monstros que vem do Json no Banco de Dados
     router.post('/register', async (req,res)=>{
         try {
-
+            
             const resultado = [];
             const monstros = req.body;
+
+            await Atributo
 
             for(var x =0;x<monstros.length;x++){
 
                 const { nome,tipo,desafio,xp,tamanho,tendencia,ca,pv, atributo,
                     deslocamento,tracos,idiomas,sentidos,resistencia_dano,
-                    teste_resistencia,pericia,vulnerabilidades,imunidades,acao,acao_lendaria,
+                    teste_resistencia,pericia,vulnerabilidades,imunidades,acao,acaoLendarias,
                     reacao,equipamentos } = monstros[x];
                 
                 resultado.push({"monster":nome});
@@ -36,13 +42,16 @@
                 const monster = await Monster.create({ nome,desafio,pv,ca,tipo,xp,tamanho,tendencia});
             
                 const monsterAtributos = new Atributo({ ...atributo , monster: monster._id });
-    
-                const monsterDeslocamento = new Deslocamento({ ...deslocamento , monster: monster._id });
-            
                 await monsterAtributos.save();
+                monster.atributo = monsterAtributos;
                 
+                const monsterDeslocamento = new Deslocamento({ ...deslocamento , monster: monster._id });
                 await monsterDeslocamento.save();               
-          
+                monster.deslocamento = monsterDeslocamento;
+                
+                
+
+
                 if(tracos != undefined && tracos )
                     await Promise.all(tracos.map(async tracos => {
                         if(tracos['tipo'] != ""){
@@ -154,13 +163,11 @@
                         
                     }));
         
-                if(acao_lendaria != undefined)
-                    await Promise.all(acao_lendaria.map(async acao_lendaria => {
-                        if(acao_lendaria['tipo'] != ""){
-                            const monsterLendaria = new AcaoLendaria({ "tipo":acaoLendaria['tipo'],"descricao":acaoLendaria['descricao'], monster: monster._id });
-                
+                if(acaoLendarias != undefined)
+                    await Promise.all(acaoLendarias.map(async acaoLendarias => {
+                        if(acaoLendarias['tipo'] != ""){
+                            const monsterLendaria = new AcaoLendaria({ "tipo":acaoLendarias['tipo'],"descricao":acaoLendarias['descricao'], monster: monster._id });
                             await monsterLendaria.save();
-                    
                             monster.acao_lendaria.push(monsterLendaria);
                         }
                         
@@ -194,45 +201,147 @@
                 
             }
             
-            return  res.send({resultado});
+            return  res.send({"status":200});
                 
         } catch (err) {
 
             return res.status(400).send({ error: err+'' });
         }
-
-
     });
 
-    router.get('/getMonsterId=:monstroId', async (req, res) => {
-        try {
+    function carregarMonstro(monstro){
+        let monstro_output = {};
+        monstro_output.id = monstro['_id'];
+        monstro_output.desafio = monstro['desafio'];
+        monstro_output.xp = monstro['xp'];
+        monstro_output.nome = monstro['nome'];
+        monstro_output.tipo = monstro['tipo'];
+        monstro_output.tamanho = monstro['tamanho'];
+        monstro_output.tendencia = monstro['tendencia'];
+        monstro_output.pv = monstro['pontosDeVida'];
+        monstro_output.ca= monstro['classeArmadura'];
 
-        const monstro = await Monster.findById(req.params.monstroId).populate(
-            ['Monster', 'tracos','idiomas','sentidos','resistencia_dano','pericia'
-                ,'acao','teste_resistencia','acao_lendaria','reacao','equipamentos',
-            'vulnerabilidades','imunidades']);
+        monstro_output.atributo =  monstro['atributo'];
+        monstro_output.deslocamento = monstro['deslocamento'];
+        
+        if(monstro['equipamentos'] != undefined){
+            monstro_output.equipamentos = [];
+            monstro['equipamentos'].map(async elemento => {
+                monstro_output.equipamentos.push(elemento.equipamento);
+            })
+        }
+
+        if(monstro['idiomas'] != undefined){
+            monstro_output.idiomas = [];
+            monstro['idiomas'].map(async elemento => {
+                monstro_output.idiomas.push(elemento.idioma);
+            })
+        }
+        
+        if(monstro['imunidades'] != undefined){
+            monstro_output.imunidades = [];
+            monstro['imunidades'].map(async elemento => {
+                monstro_output.imunidades.push(elemento.imunidade);
+            })
+        }
+
+        if(monstro['pericia'] != undefined){
+            monstro_output.pericia = [];
+            monstro['pericia'].map(async elemento => {
+                monstro_output.pericia.push({"pericia":elemento.tipo,"bonus":elemento.valor});
+            })
+        }
+
+        if(monstro['resistencia_dano'] != undefined){
+            monstro_output.resistencia_dano = [];
+            monstro['resistencia_dano'].map(async elemento => {
+                monstro_output.resistencia_dano.push(elemento.resistencia_dano);
+            })
+        }
+       
+        if(monstro['sentidos'] != undefined){
+            monstro_output.sentidos = [];
+            monstro['sentidos'].map(async elemento => {
+                monstro_output.sentidos.push({"sentido":elemento.tipo,"alcance":elemento.valor});
+            })
+        }
+        
+        if(monstro['teste_resistencia'] != undefined){
+            monstro_output.teste_resistencia = [];
+            monstro['teste_resistencia'].map(async elemento => {
+                monstro_output.teste_resistencia.push({"teste_de_resistencia":elemento.tipo,"bonus":elemento.valor});
+            })
+        }
+        
+        if(monstro['vulnerabilidades'] != undefined){
+            monstro_output.vulnerabilidades = [];
+            monstro['vulnerabilidades'].map(async elemento => {
+                monstro_output.vulnerabilidades.push(elemento.vulnerabilidade);
+            })
+        }
+        
+        if(monstro['tracos'] != undefined){
+            monstro_output.tracos = [];
+            monstro['tracos'].map(async elemento => {
+                monstro_output.tracos.push({"traço":elemento.tipo,"descricão":elemento.descricao});
+            })
+        }
+
+        if(monstro['acao'] != undefined){
+            monstro_output.acao = [];
+            monstro['acao'].map(async elemento => {
+                monstro_output.acao.push({"ação":elemento.tipo,"descricão":elemento.descricao});
+            })
+        }
+        if(monstro['acao_lendaria'] != undefined){
+            monstro_output.acaoLendarias = [];
+            monstro['acao_lendaria'].map(async elemento => {
+                monstro_output.acao_lendarias.push({"ação lendaria":elemento.tipo,"descricão":elemento.descricao});
+            })
+        }
+
+        if(monstro['reacoes'] != undefined){
+            monstro_output.reacoes = [];
+            monstro['reacoes'].map(async elemento => {
+                monstro_output.reacoes.push({"reação":elemento.tipo,"descricão":elemento.descricao});
+            })
+        }
+        
+        return monstro_output;
+    }
+
+    router.get('/getMonsterId=:monstroId', async (req, res) => {
+        try 
+        {
+
+            let monstro_output = await Monster.findById(req.params.monstroId).populate(
+                ['Monster', 'tracos','idiomas','sentidos','resistencia_dano','pericia'
+                    ,'acao','teste_resistencia','acao_lendaria','reacao','equipamentos',
+                'vulnerabilidades','imunidades']);
             
-        return res.send({ monstro });
+            monstro_output =  carregarMonstro(monstro_output) ;
+
+            return res.send({"monstro":monstro_output });
 
         } catch (err) {
         
-            return res.status(400).send({ error: 'Error loading monstro'+err });
-        
+            return res.status(400).send({ error: 'Error loading monstro'+err });        
         }
     });
 
     router.get('/getMonsterName=:monstroName', async (req, res) => {
         try {
 
-            const monstro = await Monster.find({"nome":req.params.monstroName}).populate(
+            let monstro = await Monster.find({"nome":req.params.monstroName}).populate(
                 ['Monster', 'tracos','idiomas','sentidos','resistencia_dano','pericia'
-                    ,'acao','teste_resistencia','acao_lendaria','reacao','equipamentos',
-                'vulnerabilidades','imunidades']);
-        
+                ,'acao','teste_resistencia','acao_lendaria','reacao','equipamentos',
+            'vulnerabilidades','imunidades','atributo','deslocamento']);
+            
+            monstro = carregarMonstro(monstro[0]);
             return res.send({ monstro });
 
         } catch (err) {
-        return res.status(400).send({ error: 'Error loading monstro, a' });
+        return res.status(400).send({ error: ""+err});
         }
     });
 
@@ -301,7 +410,7 @@
                 
                 monsters.push({
                     "id":monstro['_id'],"nome":monstro['nome'],
-                    "Força":atribs[cont]['forca'],"Destreza":atribs[cont]['destreza'],"Escavacão":atribs[cont]['escavacao'],
+                    "Força":atribs[cont]['forca'],"Destreza":atribs[cont]['destreza'],"Constituição":atribs[cont]['constituicao'],
                     "Inteligencia":atribs[cont]['inteligencia'],"Sabedoria":atribs[cont]['sabedoria'],"Carisma":atribs[cont]['carisma']
                 })
             }
@@ -377,7 +486,7 @@
             const monstro_input = await Monster.find().populate(['Monster','pericia']);
 
             for(let cont=0;cont<monstro_input.length;cont++){
-                                
+                tempo=[];          
                 for(let x=0;x<monstro_input[cont]['pericia'].length;x++){
                     
                     j = i;
@@ -431,8 +540,8 @@
                 tempo = []         
                 
                 for(let x=0;x<monstro_input[cont]['idiomas'].length;x++){
+                    
                     j = i;
-                   
                     tempo.push({"idioma":monstro_input[cont]['idiomas'][x]['idioma']});
                     
                     if(obj['parms1'] != undefined && monstro_input[cont]['idiomas'][x]['idioma'] == obj['parms1'] )
@@ -450,7 +559,6 @@
                     }
                     if(j === 0)
                     {
-                        
                         monstro_output.push({"id":monstro_input[cont]['_id'],"nome":monstro_input[cont]['nome'],"idiomas":tempo});
                     }
                     
@@ -771,21 +879,292 @@
         }
     });
 
-     /*
-        getAllTipo()
-        getAllSentidos()
-        getAllPericias()
-        getAllImunidades()
-        getAllAçõesLendarias()
-        getAllVulnerabilidades()
-        getAllIdiomas()
-        getALlReacoes()
-        getAllEquipamentos()
-        getAllResistenciaDano() 
-    
-    */
+   router.get('/getAllTipo', async (req, res) => {
+        try {
 
+            const monstro_input = await Monster.find(null,{tipo:1}).populate(['Monster']);
+            let original = [];
+            let ocorrencias = [];
+            let saida = [];
 
+            for(let cont=0;cont<monstro_input.length;cont++){
+                if(original.indexOf(monstro_input[cont]['tipo'])==-1){
+                    original.push(monstro_input[cont]['tipo']);
+                    ocorrencias.push(1);
+                }
+                else{
+                    ocorrencias[original.indexOf(monstro_input[cont]['tipo'])] +=1;
+                }
+                
+            }
+
+            for(let cont=0;cont<original.length;cont++){
+                saida.push({"Tipo":original[cont],"Quantidade":ocorrencias[cont]});
+            }
+
+            return res.send({ "Count":saida.length,"Tipos":saida });
+            
+
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getTipo '+err });
+        }
+    });
+
+    router.get('/getAllSentidos', async (req, res) => {
+        try {
+
+            const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','sentidos']);
+            let original = []; let ocorrencias = []; let saida = [];
+
+            for(let cont=0;cont<monstros.length;cont++){
+                if(monstros[cont]['sentidos']!=undefined){
+                    for(let index=0;index<monstros[cont]['sentidos'].length;index++){
+                        if(original.indexOf(monstros[cont]['sentidos'][index]['tipo'])==-1){
+                            original.push(monstros[cont]['sentidos'][index]['tipo']);
+                            ocorrencias.push(1);
+                        }
+                        else{
+                            ocorrencias[original.indexOf(monstros[cont]['sentidos'][index]['tipo'])] +=1;
+                        }
+                    }
+                }        
+            }
+            
+            for(let cont=0;cont<original.length;cont++){
+                saida.push({"Sentido":original[cont],"Quantidade":ocorrencias[cont]});
+            }
+
+            return res.send({ "Count":saida.length,"Sentidos":saida });
+            
+
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getSentidos '+err });
+        }
+    });
+
+    router.get('/getAllPericias', async (req, res) => {
+        try {
+
+            const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','pericia']);
+            let original = []; let ocorrencias = []; let saida = [];
+
+            for(let cont=0;cont<monstros.length;cont++){
+                if(monstros[cont]['pericia']!=undefined){
+                    for(let index=0;index<monstros[cont]['pericia'].length;index++){
+                        if(original.indexOf(monstros[cont]['pericia'][index]['tipo'])==-1){
+                            original.push(monstros[cont]['pericia'][index]['tipo']);
+                            ocorrencias.push(1);
+                        }
+                        else{
+                            ocorrencias[original.indexOf(monstros[cont]['pericia'][index]['tipo'])] +=1;
+                        }
+                    }
+                }        
+            }
+            
+            for(let cont=0;cont<original.length;cont++){
+                saida.push({"Pericia":original[cont],"Quantidade":ocorrencias[cont]});
+            }
+
+            return res.send({ "Count":saida.length,"Pericias":saida });
+            
+
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getPericia '+err });
+        }
+    });
+
+    router.get('/getAllImunidades', async (req, res) => {
+        try {
+
+            const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','imunidades']);
+            let original = []; let ocorrencias = []; let saida = [];
+
+            for(let cont=0;cont<monstros.length;cont++){
+                if(monstros[cont]['imunidades']!=undefined){
+                    for(let index=0;index<monstros[cont]['imunidades'].length;index++){
+                        if(original.indexOf(monstros[cont]['imunidades'][index]['imunidade'])==-1){
+                            original.push(monstros[cont]['imunidades'][index]['imunidade']);
+                            ocorrencias.push(1);
+                        }
+                        else{
+                            ocorrencias[original.indexOf(monstros[cont]['imunidades'][index]['imunidade'])] +=1;
+                        }
+                    }
+                }        
+            }
+            
+            for(let cont=0;cont<original.length;cont++){
+                saida.push({"Imunidade":original[cont],"Quantidade":ocorrencias[cont]});
+            }
+
+            return res.send({ "Count":saida.length,"Imunidades":saida });
+            
+
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getAllImunidade '+err });
+        }
+    });
+
+    router.get('/getAllVulnerabilidades', async (req, res) => {
+        try {
+
+            const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','vulnerabilidades']);
+            let original = []; let ocorrencias = []; let saida = [];
+
+            for(let cont=0;cont<monstros.length;cont++){
+                if(monstros[cont]['vulnerabilidades']!=undefined){
+                    for(let index=0;index<monstros[cont]['vulnerabilidades'].length;index++){
+                        if(original.indexOf(monstros[cont]['vulnerabilidades'][index]['vulnerabilidade'])==-1){
+                            original.push(monstros[cont]['vulnerabilidades'][index]['vulnerabilidade']);
+                            ocorrencias.push(1);
+                        }
+                        else{
+                            ocorrencias[original.indexOf(monstros[cont]['vulnerabilidades'][index]['vulnerabilidade'])] +=1;
+                        }
+                    }
+                }        
+            }
+            
+            for(let cont=0;cont<original.length;cont++){
+                saida.push({"Vulnerabilidade":original[cont],"Quantidade":ocorrencias[cont]});
+            }
+
+            return res.send({ "Count":saida.length,"Vulnerabilidades":saida });
+            
+
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getAllVulnerabilidades'+err });
+        }
+    });
+
+    router.get('/getAllIdiomas', async (req, res) => {
+        try {
+
+            const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','idiomas']);
+            let original = []; let ocorrencias = []; let saida = [];
+
+            for(let cont=0;cont<monstros.length;cont++){
+                if(monstros[cont]['idiomas']!=undefined){
+                    for(let index=0;index<monstros[cont]['idiomas'].length;index++){
+                        if(original.indexOf(monstros[cont]['idiomas'][index]['idioma'])==-1){
+                            original.push(monstros[cont]['idiomas'][index]['idioma']);
+                            ocorrencias.push(1);
+                        }
+                        else{
+                            ocorrencias[original.indexOf(monstros[cont]['idiomas'][index]['idioma'])] +=1;
+                        }
+                    }
+                }        
+            }
+            
+            for(let cont=0;cont<original.length;cont++){
+                saida.push({"Idioma":original[cont],"Quantidade":ocorrencias[cont]});
+            }
+
+            return res.send({ "Count":saida.length,"Idiomas":saida });
+            
+
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getAllIdiomas '+err });
+        }
+    });
+
+    router.get('/getAllReacoes', async (req, res) => {
+        try {
+
+            const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','reacao']);
+            let original = []; let ocorrencias = []; let saida = [];
+            
+            for(let cont=0;cont<monstros.length;cont++){
+                if(monstros[cont]['reacao']!=undefined){
+                    for(let index=0;index<monstros[cont]['reacao'].length;index++){
+                        if(original.indexOf(monstros[cont]['reacao'][index]['tipo'])==-1){
+                            original.push(monstros[cont]['reacao'][index]['tipo']);
+                            ocorrencias.push(1);
+                        }
+                        else{
+                            ocorrencias[original.indexOf(monstros[cont]['reacao'][index]['tipo'])] +=1;
+                        }
+                    }
+                }        
+            }
+            
+            for(let cont=0;cont<original.length;cont++){
+                saida.push({"reação":original[cont],"Quantidade":ocorrencias[cont]});
+            }
+
+            return res.send({ "Count":saida.length,"Reações":saida });
+            
+
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getAllReacoes '+err });
+        }
+    });
+
+    router.get('/getAllEquipamentos', async (req, res) => {
+        try {
+
+            const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','equipamentos']);
+            let original = []; let ocorrencias = []; let saida = [];
+
+            for(let cont=0;cont<monstros.length;cont++){
+                if(monstros[cont]['equipamentos']!=undefined){
+                    for(let index=0;index<monstros[cont]['equipamentos'].length;index++){
+                        if(original.indexOf(monstros[cont]['equipamentos'][index]['equipamento'])==-1){
+                            original.push(monstros[cont]['equipamentos'][index]['equipamento']);
+                            ocorrencias.push(1);
+                        }
+                        else{
+                            ocorrencias[original.indexOf(monstros[cont]['equipamentos'][index]['equipamento'])] +=1;
+                        }
+                    }
+                }        
+            }
+            
+            for(let cont=0;cont<original.length;cont++){
+                saida.push({"Equipamento":original[cont],"Quantidade":ocorrencias[cont]});
+            }
+
+            return res.send({ "Count":saida.length,"Equipamentos":saida });
+            
+
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getAllEquipamento '+err });
+        }
+    });
+
+    router.get('/getAllResistenciaDano', async (req, res) => {
+        try {
+
+            const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','resistencia_dano']);
+            let original = []; let ocorrencias = []; let saida = [];
+
+            for(let cont=0;cont<monstros.length;cont++){
+                if(monstros[cont]['resistencia_dano']!=undefined){
+                    for(let index=0;index<monstros[cont]['resistencia_dano'].length;index++){
+                        if(original.indexOf(monstros[cont]['resistencia_dano'][index]['resistencia_dano'])==-1){
+                            original.push(monstros[cont]['resistencia_dano'][index]['resistencia_dano']);
+                            ocorrencias.push(1);
+                        }
+                        else{
+                            ocorrencias[original.indexOf(monstros[cont]['resistencia_dano'][index]['resistencia_dano'])] +=1;
+                        }
+                    }
+                }        
+            }
+            
+            for(let cont=0;cont<original.length;cont++){
+                saida.push({"ResistenciaDano":original[cont],"Quantidade":ocorrencias[cont]});
+            }
+
+            return res.send({ "Count":saida.length,"Resistencias de Dano":saida });
+            
+
+        } catch (err) {
+            return res.status(400).send({ error: 'Error loading getAllResistenciaDano '+err });
+        }
+    });
     
     module.exports = app => app.use('/monster',router);
 

@@ -6,6 +6,7 @@ function structColecao(monstros,indice){
 
     for(let cont=0;cont<monstros.length;cont++){
         for(let index=0;index<monstros[cont][indice].length;index++){
+            
             if(original.indexOf(monstros[cont][indice][index])==-1){
                 original.push(monstros[cont][indice][index]);
                 ocorrencias.push(1);
@@ -124,7 +125,29 @@ function showPericia(monstros){
 }
 
 function showImuni(monstros){
-    structColecao(monstros,'imunidades')
+    //structColecao(monstros,'imunidades')
+
+    let original = [];
+    let ocorrencias = [];
+
+    for(let cont=0;cont<monstros.length;cont++){
+        if(monstros[cont]['imunidades']!= undefined)
+        for(let index=0;index<monstros[cont]['imunidades'].length;index++){
+            
+            if(original.indexOf(monstros[cont]['imunidades'][index])==-1){
+                original.push(monstros[cont]['imunidades'][index]);
+                ocorrencias.push(1);
+            }
+            else{
+                ocorrencias[original.indexOf(monstros[cont]['imunidades'][index])] +=1;
+            }
+        }
+        
+    }
+
+    for(let cont=0;cont<original.length;cont++){
+        console.log(original[cont],ocorrencias[cont]);
+    }
 }
 
 function showVulni(monstros){
