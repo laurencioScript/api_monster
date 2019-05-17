@@ -1,0 +1,1672 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Criação de uma API com nodeJS, para disponibilizar dados do livro de Monstros do D&D 5e, esse projeto é um trabalho em grupo da materia Arquitetura de computadores, que visa colaborar com a comunidade de RPG de mesa. https://github.com/laurencioScript/api_monster",
+    "version": "1.0.0",
+    "title": "API Monster D&D"
+  },
+  "host": "0.0.0.0:8080",
+  "tags": [
+    {
+      "name": "Monstro",
+      "description": "",
+      "externalDocs": {
+        "description": "",
+        "url": ""
+      }
+    },{
+      "name": "Dados",
+      "description": "",
+      "externalDocs": {
+        "description": "",
+        "url": ""
+      }
+    }
+  ],
+  "paths": {
+    "/monster/register": {
+      "post": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "placeOrder",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Cadastra os monstros no banco de dados.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Exibe todos os monstros cadastrados"
+          },
+          "400": {
+            "description": " ta bugado me chama laurencio.arkauss@gmail.com "
+          }
+        }
+      }
+    },
+    "/monster/getMonsterId/": {
+      "get": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "Retorna todos os dados de um monstro especifico.",
+        "operationId": "getMonsterId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Identificação do monstro",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "sucesso na operação",
+            "schema": {
+              "$ref": "#/definitions/Monstro"
+            }
+          },
+          "404": {
+            "description": "ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/monster/getMonsterName/": {
+      "get": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "Retorna todos os dados de um monstro especifico.",
+        "operationId": "getMonsterName",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "nome do monstro",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "sucesso na operação",
+            "schema": {
+              "$ref": "#/definitions/Monstro"
+            }
+          },
+          "400": {
+            "description": " ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/monster/getMonster/": {
+      "get": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "Busca todos os monstros de acordo com o parametros passados, não deixe espaço vazio substitua por null",
+        "operationId": "getMonster",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "tipo",
+            "in": "query",
+            "description": "tipo do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tamanho",
+            "in": "query",
+            "description": "tamanho do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "desafio",
+            "in": "query",
+            "description": "desafio do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tendencia",
+            "in": "query",
+            "description": "tendencia do monstro(sigla em maiusculo)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ca",
+            "in": "query",
+            "description": "classe de armadura do monstro",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pv",
+            "in": "query",
+            "description": "pontos de vida do monstro",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Monstros": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "_id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "desafio": {
+                        "type": "string"
+                      },
+                      "pv": {
+                        "type": "string"
+                      },
+                      "ca": {
+                        "type": "integer"
+                      },
+                      "tipo": {
+                        "type": "string"
+                      },
+                      "tamanho": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/monster/getAtrib/": {
+      "get": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "Busca todos os monstros de acordo com o parametros passados, não deixe espaço vazio substitua por null.",
+        "operationId": "getAtrib",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "forca",
+            "in": "query",
+            "description": "valor de força do monstro",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "destreza",
+            "in": "query",
+            "description": "valor de destreza do monstro",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "constituicao",
+            "in": "query",
+            "description": "valor de constituição do monstro",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "inteligencia",
+            "in": "query",
+            "description": "valor de inteligencia do monstro",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "sabedoria",
+            "in": "query",
+            "description": "valor de sabedoria do monstro",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "carisma",
+            "in": "query",
+            "description": "valor de carisma do monstro",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Monstros": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "Força": {
+                        "type": "integer"
+                      },
+                      "Destreza": {
+                        "type": "integer"
+                      },
+                      "Constituição": {
+                        "type": "integer"
+                      },
+                      "Inteligencia": {
+                        "type": "integer"
+                      },
+                      "Sabedoria": {
+                        "type": "integer"
+                      },
+                      "Carisma": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/monster/getDesloc/": {
+      "get": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "Busca todos os monstros de acordo com o parametros passados, não deixe espaço vazio substitua por null.",
+        "operationId": "getDesloc",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "escalada",
+            "in": "query",
+            "description": "valor de escalada do monstro",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "voo",
+            "in": "query",
+            "description": "valor de voo do monstro",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "escavacao",
+            "in": "query",
+            "description": "valor de escavação do monstro",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "natacao",
+            "in": "query",
+            "description": "valor de natação do monstro",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "deslocamento",
+            "in": "query",
+            "description": "valor de deslocamento do monstro",
+            "required": false,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Monstros": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "Escalada": {
+                        "type": "number"
+                      },
+                      "Voo": {
+                        "type": "number"
+                      },
+                      "Escavação": {
+                        "type": "number"
+                      },
+                      "Natação": {
+                        "type": "number"
+                      },
+                      "Deslocamento": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/monster/getPericia/": {
+      "get": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "Busca todos os monstros de acordo com o parametros passados, não deixe espaço vazio substitua por null.",
+        "operationId": "getPericia",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "parm1",
+            "in": "query",
+            "description": "pericia do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm2",
+            "in": "query",
+            "description": "pericia do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm3",
+            "in": "query",
+            "description": "pericia do monstro",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Monstros": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "pericia": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "tipo": {
+                              "type": "string"
+                            },
+                            "bonus": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/monster/getIdioma/": {
+      "get": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "Busca todos os monstros de acordo com o parametros passados, não deixe espaço vazio substitua por null.",
+        "operationId": "getIdioma",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "parm1",
+            "in": "query",
+            "description": "idioma do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm2",
+            "in": "query",
+            "description": "idioma do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm3",
+            "in": "query",
+            "description": "idioma do monstro",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Monstros": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "idioma": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/monster/getSentido/": {
+      "get": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "Busca todos os monstros de acordo com o parametros passados, não deixe espaço vazio substitua por null.",
+        "operationId": "getSentido",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "parm1",
+            "in": "query",
+            "description": "sentido do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm2",
+            "in": "query",
+            "description": "sentido do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm3",
+            "in": "query",
+            "description": "sentido do monstro",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Monstros": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "sentido": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "tipo": {
+                              "type": "string"
+                            },
+                            "alcance": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/monster/getResistenciaDano/": {
+      "get": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "Busca todos os monstros de acordo com o parametros passados, não deixe espaço vazio substitua por null.",
+        "operationId": "getResistenciaDano",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "parm1",
+            "in": "query",
+            "description": "resistencia dano do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm2",
+            "in": "query",
+            "description": "resistencia dano do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm3",
+            "in": "query",
+            "description": "resistencia dano do monstro",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Monstros": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "resistencia_dano": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/monster/getReacoes/": {
+      "get": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "Busca todos os monstros de acordo com o parametros passados, não deixe espaço vazio substitua por null.",
+        "operationId": "getVulnerabilidade",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "parm1",
+            "in": "query",
+            "description": "vulnerabilidade do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm2",
+            "in": "query",
+            "description": "vulnerabilidade do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm3",
+            "in": "query",
+            "description": "vulnerabilidade do monstro",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Monstros": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "vulnerabilidade": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/monster/getTesteResistencia/": {
+      "get": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "Busca todos os monstros de acordo com o parametros passados, não deixe espaço vazio substitua por null.",
+        "operationId": "getTesteResitencia",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "parm1",
+            "in": "query",
+            "description": "teste de resistencia do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm2",
+            "in": "query",
+            "description": "teste de resistencia do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm3",
+            "in": "query",
+            "description": "teste de resistencia do monstro",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Monstros": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "teste_resistencia": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "tipo": {
+                              "type": "string"
+                            },
+                            "bonus": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/monster/getImunidade/": {
+      "get": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "Busca todos os monstros de acordo com o parametros passados, não deixe espaço vazio substitua por null.",
+        "operationId": "getImunidade",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "parm1",
+            "in": "query",
+            "description": "imunidade do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm2",
+            "in": "query",
+            "description": "imunidade do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm3",
+            "in": "query",
+            "description": "imunidade do monstro",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Monstros": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "imunidade": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/monster/getEquipamentos/": {
+      "get": {
+        "tags": [
+          "Monstro"
+        ],
+        "summary": "",
+        "description": "Busca todos os monstros de acordo com o parametros passados, não deixe espaço vazio substitua por null.",
+        "operationId": "getEquipamentos",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "parm1",
+            "in": "query",
+            "description": "equipamento do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm2",
+            "in": "query",
+            "description": "equipamento do monstro",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parm3",
+            "in": "query",
+            "description": "equipamento do monstro",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Monstros": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "equipamento": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/analise/getAllTipo/": {
+      "get": {
+        "tags": [
+          "Dados"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "getAllTipo",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Tipos": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Tipo": {
+                        "type": "string"
+                      },
+                      "Quantidade": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/analise/getAllSentidos/": {
+      "get": {
+        "tags": [
+          "Dados"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "getAllSentidos",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Sentidos": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Sentido": {
+                        "type": "string"
+                      },
+                      "Quantidade": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/analise/getAllPericia/": {
+      "get": {
+        "tags": [
+          "Dados"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "getAllPericia",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Pericias": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Pericia": {
+                        "type": "string"
+                      },
+                      "Quantidade": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/analise/getAllImunidades/": {
+      "get": {
+        "tags": [
+          "Dados"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "getAllImunidades",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Imunidades": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Imunidade": {
+                        "type": "string"
+                      },
+                      "Quantidade": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/analise/getAllVulnerabilidade/": {
+      "get": {
+        "tags": [
+          "Dados"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "getAllVulnerabilidade",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Vulnerabilidades": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Vulnerabilidade": {
+                        "type": "string"
+                      },
+                      "Quantidade": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/analise/getAllReacoes/": {
+      "get": {
+        "tags": [
+          "Dados"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "getAllReacoes",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Reacoes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Reacao": {
+                        "type": "string"
+                      },
+                      "Quantidade": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/analise/getAllEquipamentos/": {
+      "get": {
+        "tags": [
+          "Dados"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "getAllEquipamentos",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Equipamentos": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Equipamento": {
+                        "type": "string"
+                      },
+                      "Quantidade": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    },
+    "/analise/getAllResistenciaDano/": {
+      "get": {
+        "tags": [
+          "Dados"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "getAllResistenciaDano",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "Resistencias de Dano": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ResistenciaDano": {
+                        "type": "string"
+                      },
+                      "Quantidade": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ta bugado me chama laurencio.arkauss@gmail.com "
+          },
+          "404": {
+            "description": "Ausência de parâmetros"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Register": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "desafio": {
+            "type": "integer"
+          },
+          "xp": {
+            "type": "integer"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string"
+          },
+          "tamanho": {
+            "type": "string"
+          },
+          "tendencia": {
+            "type": "string"
+          },
+          "pv": {
+            "type": "string"
+          },
+          "ca": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "Monstro": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "monstros": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "desafio": {
+                "type": "string"
+              },
+              "xp": {
+                "type": "integer"
+              },
+              "nome": {
+                "type": "string"
+              },
+              "tipo": {
+                "type": "string"
+              },
+              "tamanho": {
+                "type": "string"
+              },
+              "tendencia": {
+                "type": "string"
+              },
+              "atributo": {
+                "type": "object",
+                "properties": {
+                  "forca": {
+                    "type": "integer"
+                  },
+                  "destreza": {
+                    "type": "integer"
+                  },
+                  "constituicao": {
+                    "type": "integer"
+                  },
+                  "inteligencia": {
+                    "type": "integer"
+                  },
+                  "sabedoria": {
+                    "type": "integer"
+                  },
+                  "carisma": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "deloscamento": {
+                "type": "object",
+                "properties": {
+                  "escalada": {
+                    "type": "number"
+                  },
+                  "voo": {
+                    "type": "number"
+                  },
+                  "escavacao": {
+                    "type": "number"
+                  },
+                  "deslocamento": {
+                    "type": "number"
+                  },
+                  "natacao": {
+                    "type": "number"
+                  }
+                }
+              },
+              "idioma": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "imunidade": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "Reacoes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "sentido": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "tipo": {
+                      "type": "string"
+                    },
+                    "alcance": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "teste_resistencia": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "tipo": {
+                      "type": "string"
+                    },
+                    "bonus": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "pericia": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "tipo": {
+                      "type": "string"
+                    },
+                    "bonus": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "resistencia_dano": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tracos": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "tipo": {
+                      "type": "string"
+                    },
+                    "descricao": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "acao": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "tipo": {
+                      "type": "string"
+                    },
+                    "descricao": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "acao_lendaria": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "tipo": {
+                      "type": "string"
+                    },
+                    "descricao": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "equipamento": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

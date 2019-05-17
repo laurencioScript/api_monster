@@ -46,11 +46,11 @@ const MonsterSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Traco'
     }],
-    idiomas: [{
+    idioma: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Idioma',
     }],
-    sentidos: [{
+    sentido: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Sentido',
     }],
@@ -66,11 +66,11 @@ const MonsterSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Pericia',
     }],
-    vulnerabilidades: [{
+    vulnerabilidade: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Vulnerabilidade',
     }],
-    imunidades: [{
+    imunidade: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Imunidade',
     }],
@@ -86,7 +86,7 @@ const MonsterSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Reacao',
     }],
-    equipamentos: [{
+    equipamento: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Equipamento',
     }]

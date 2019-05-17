@@ -1,5 +1,6 @@
 const clean = require('./clean');
 const show = require('./show');
+const axios = require('axios');
 
 const path = ['gabriel','danilo','lucas'];
 
@@ -35,12 +36,29 @@ function writeJson(monstros){
 
 async function main(){
     
-    let monstros = load();
-    monstros = clean.convert(monstros);
-    monstros = clean.clear(monstros);
-    show.showImuni(monstros);
-    writeJson(monstros);
-    console.log(monstros.length+' monstros cadastrados');
+    //let monstros = load();
+    //monstros = clean.convert(monstros);
+    //monstros = clean.clear(monstros);
+   // writeJson(monstros);
+   
+   try{
+        const URL = 'http://0.0.0.0:8085/monster'
+    
+        const key = 'tiranossauro';
+
+        const url = `${URL}/getMonsterName=${key}`;
+    
+        const response = await axios.get(url);
+        
+        console.log(response.data);
+   }
+   catch(error){
+        console.log('getSummonerName: ',error)
+   }
+
+   
+
+    //console.log(monstros.length+' monstros cadastrados');
     
 }
 

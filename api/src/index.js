@@ -7,6 +7,15 @@ app.use (bodyParser.json ({limit: '50mb'}));
 app.use (bodyParser.urlencoded ({limit: '50mb', extended: true}));
 
 require('./controller/monsterController')(app);
+require('./controller/observadorController')(app);
 
-app.listen(8085);
+const router = express.Router();
+
+var swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger.json');
+
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
+app.listen(8080);
 
