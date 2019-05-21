@@ -1768,68 +1768,6 @@
 		]
 	},
 	{
-		"desafio": "1/4",
-		"xp": 50,
-		"nome": "dretch",
-		"tipo": "corruptor",
-		"tamanho": "pequeno",
-		"tendencia": "CM",
-		"pv": "4D6+4",
-		"ca": 11,
-		"atributo": {
-			"forca": 11,
-			"destreza": 11,
-			"constituicao": 12,
-			"inteligencia": 5,
-			"sabedoria": 8,
-			"carisma": 3
-		},
-		"deslocamento": {
-			"escalada": 0,
-			"voo": 0,
-			"escavacao": 0,
-			"deslocamento": 6,
-			"natacao": 0
-		},
-		"idiomas": [
-			"abissal",
-			"telepatia"
-		],
-		"imunidades": [
-			"veneno",
-			"envenenado"
-		],
-		"sentidos": [
-			{
-				"tipo": "visão no escuro",
-				"valor": 36
-			},
-			{
-				"tipo": "percepção passiva",
-				"valor": 9
-			}
-		],
-		"teste_resistencia": [],
-		"acao": [
-			{
-				"tipo": "ataques múltiplos",
-				"descricao": "o dretch realiza dois ataques: um com suamordida e um com suas garras."
-			},
-			{
-				"tipo": "mordida",
-				"descricao": "ataque corpo-a-corpo com arma: +2 para atingir,alcance 1,5 m, um alvo. acerto: 3 (1d6) de dano perfurante."
-			},
-			{
-				"tipo": "garras",
-				"descricao": "ataque corpo-a-corpo com arma: +2 para atingir, alcance1,5 m, um alvo. acerto: 5 (2d4) de dano cortante."
-			},
-			{
-				"tipo": "nuvem fétida",
-				"descricao": "(1/dia). um gás esverdeado nojento se estende dodretch num raio de 3 metros. o gás se espalha, dobrando esquinase sua área é de escuridão leve. ela dura por 1 minuto ou até queum vento forte a disperse. qualquer criatura que comece seuturno na área deve ser bem sucedida num teste de resistência deconstituição cd 11 ou ficará envenenada até o início do próximoturno dela. enquanto estiver envenenada dessa forma, o alvo sópode realizar uma ação ou uma ação bônus no seu turno, mas nãoambas, e não pode realizar reações."
-			}
-		]
-	},
-	{
 		"desafio": "3",
 		"xp": 700,
 		"nome": "cão infernal",

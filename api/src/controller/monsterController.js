@@ -4,12 +4,8 @@
     const express = require('express');   
     const router = express.Router();
     const manipulador = require('./utility');
-    const mongoose = require('./../database');
     
     /** FACTORY POSSUI TODAS AS MODELS  **/
-   
-
-    
 
     // Serve para inserir os monstros que vem do Json no Banco de Dados
     router.post('/register', async (req,res)=>{
@@ -191,7 +187,7 @@
         }
     });
 
-    router.get('/getMonsterId/', async (req, res) => {
+    router.get('/getMonstroId', async (req, res) => {
         try 
         {
             let monstro = await factory.Monster.findById(req.query.id).populate(allParms);
@@ -205,10 +201,10 @@
         }
     });
 
-    router.get('/getMonsterName/', async (req, res) => {
+    router.get('/getMonstroName', async (req, res) => {
         try {
 
-            const monstros = await factory.Monster.find({"nome":req.query.name}).populate(allParms);
+            const monstros = await factory.Monster.find({"nome":{$regex: '.*' + req.query.name + '.*'}}).populate(allParms);
             let saida = []; 
 
             monstros.map(async monstro =>{
@@ -222,7 +218,7 @@
         }
     });
 
-    router.get('/getMonster/', async (req, res) => {
+    router.get('/getMonstro', async (req, res) => {
         try {
             const obj = manipulador.getObjParams(req.query);
 
@@ -235,7 +231,7 @@
         }
     });
 
-    router.get('/getAtrib/', async (req, res) => {
+    router.get('/getAtrib', async (req, res) => {
         try {
             const obj = manipulador.getObjParams(req.query);  let monsters = [];
             
@@ -259,7 +255,7 @@
         }
     });
     
-    router.get('/getDesloc/', async (req, res) => {
+    router.get('/getDesloc', async (req, res) => {
         try {
             const obj = manipulador.getObjParams(req.query);  let monsters = [];
             
@@ -283,7 +279,7 @@
         }
     });
 
-    router.get('/getPericia/', async (req, res) => {
+    router.get('/getPericia', async (req, res) => {
         try {
 
             const obj = manipulador.getArrayParams(req.query);     
@@ -299,7 +295,7 @@
         }
     });
 
-    router.get('/getIdioma/', async (req, res) => {
+    router.get('/getIdioma', async (req, res) => {
         try {
 
             const obj = manipulador.getArrayParams(req.query); 
@@ -315,7 +311,7 @@
         }
     });
 
-    router.get('/getSentido/', async (req, res) => {
+    router.get('/getSentido', async (req, res) => {
         try {
 
             const obj = manipulador.getArrayParams(req.query); 
@@ -331,7 +327,7 @@
         }
     });
 
-    router.get('/getResistenciaDano/', async (req, res) => {
+    router.get('/getResistenciaDano', async (req, res) => {
         try {
 
             const obj = manipulador.getArrayParams(req.query); 
@@ -347,7 +343,7 @@
         }
     });
 
-    router.get('/getTesteResistencia/', async (req, res) => {
+    router.get('/getTesteResistencia', async (req, res) => {
         try {
 
             const obj = manipulador.getArrayParams(req.query); 
@@ -363,7 +359,7 @@
         }
     });
 
-    router.get('/getVulnerabilidade/', async (req, res) => {
+    router.get('/getVulnerabilidade', async (req, res) => {
         try {
 
             const obj = manipulador.getArrayParams(req.query); 
@@ -379,7 +375,7 @@
         }
     });
 
-    router.get('/getImunidade/', async (req, res) => {
+    router.get('/getImunidade', async (req, res) => {
         try {
 
             const obj = manipulador.getArrayParams(req.query); 
@@ -395,7 +391,7 @@
         }
     });
 
-    router.get('/getEquipamento/', async (req, res) => {
+    router.get('/getEquipamento', async (req, res) => {
         try {
 
             const obj = manipulador.getArrayParams(req.query);

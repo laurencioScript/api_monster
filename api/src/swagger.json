@@ -1,21 +1,22 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Criação de uma API com nodeJS, para disponibilizar dados do livro de Monstros do D&D 5e, esse projeto é um trabalho em grupo da materia Arquitetura de computadores, que visa colaborar com a comunidade de RPG de mesa. https://github.com/laurencioScript/api_monster",
+    "description": "API Monster D&D é um projeto criado por alunos do IFSP - Campus Cubatão **sem fins lucrativos** e destinado a colaborar com a comunidade de RPG de mesa, a função é facilitar a busca de monstros do [livro dos Monstros D&D 5e](https://drive.google.com/open?id=15OF2ErP_6eLK5rrA-qKuHJCaIlWgzRDW).\n\n *“Tudo o que temos de decidir é o que fazer com o tempo que nos é dado.” - Gandalf* \n\n **Colaboradores** \n * [Danilo Affonso](https://github.com/danlloxxddx)\n* [Gabriel Laurencio](https://github.com/laurencioScript)\n * [Lucas Marques](https://github.com/Lucas-Prog)\n * [Matheus Samuel](https://www.facebook.com/xmatsik) \n\n **Avisos** \n\n >Tendo invista a complexidade de informações que tem no livro, pode acontecer de você não achar uma informação que tem no livro e não possui na API, recomendo que sempre procure em Traços e caso realmente não ache entre em contato, para que possa ser corrigido." ,
     "version": "1.0.0",
     "title": "API Monster D&D"
   },
   "host": "0.0.0.0:8080",
   "tags": [
     {
-      "name": "Monstro",
-      "description": "",
+      "name": "Dados",
+      "description": "Aqui você consegue saber todos os tipos,pericias,sentidos,etc. Para usar em funções mais complexas como getMonstro",
       "externalDocs": {
         "description": "",
         "url": ""
       }
-    },{
-      "name": "Dados",
+    },
+    {
+      "name": "Monstro",
       "description": "",
       "externalDocs": {
         "description": "",
@@ -24,39 +25,8 @@
     }
   ],
   "paths": {
-    "/monster/register": {
-      "post": {
-        "tags": [
-          "Monstro"
-        ],
-        "summary": "",
-        "description": "",
-        "operationId": "placeOrder",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Cadastra os monstros no banco de dados.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Register"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Exibe todos os monstros cadastrados"
-          },
-          "400": {
-            "description": " ta bugado me chama laurencio.arkauss@gmail.com "
-          }
-        }
-      }
-    },
-    "/monster/getMonsterId/": {
+
+    "/monster/getMonstroId": {
       "get": {
         "tags": [
           "Monstro"
@@ -80,8 +50,199 @@
           "200": {
             "description": "sucesso na operação",
             "schema": {
-              "$ref": "#/definitions/Monstro"
-            }
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "integer"
+                  },
+                  "monstros": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "desafio": {
+                          "type": "string"
+                        },
+                        "xp": {
+                          "type": "integer"
+                        },
+                        "nome": {
+                          "type": "string"
+                        },
+                        "tipo": {
+                          "type": "string"
+                        },
+                        "tamanho": {
+                          "type": "string"
+                        },
+                        "tendencia": {
+                          "type": "string"
+                        },
+                        "atributo": {
+                          "type": "object",
+                          "properties": {
+                            "forca": {
+                              "type": "integer"
+                            },
+                            "destreza": {
+                              "type": "integer"
+                            },
+                            "constituicao": {
+                              "type": "integer"
+                            },
+                            "inteligencia": {
+                              "type": "integer"
+                            },
+                            "sabedoria": {
+                              "type": "integer"
+                            },
+                            "carisma": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "deloscamento": {
+                          "type": "object",
+                          "properties": {
+                            "escalada": {
+                              "type": "number"
+                            },
+                            "voo": {
+                              "type": "number"
+                            },
+                            "escavacao": {
+                              "type": "number"
+                            },
+                            "deslocamento": {
+                              "type": "number"
+                            },
+                            "natacao": {
+                              "type": "number"
+                            }
+                          }
+                        },
+                        "idioma": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "imunidade": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "Reacoes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "sentido": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "tipo": {
+                                "type": "string"
+                              },
+                              "alcance": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "teste_resistencia": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "tipo": {
+                                "type": "string"
+                              },
+                              "bonus": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "pericia": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "tipo": {
+                                "type": "string"
+                              },
+                              "bonus": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "resistencia_dano": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "tracos": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "tipo": {
+                                "type": "string"
+                              },
+                              "descricao": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "acao": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "tipo": {
+                                "type": "string"
+                              },
+                              "descricao": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "acao_lendaria": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "tipo": {
+                                "type": "string"
+                              },
+                              "descricao": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "equipamento": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
           },
           "404": {
             "description": "ausência de parâmetros"
@@ -89,7 +250,7 @@
         }
       }
     },
-    "/monster/getMonsterName/": {
+    "/monster/getMonstroName": {
       "get": {
         "tags": [
           "Monstro"
@@ -113,8 +274,200 @@
           "200": {
             "description": "sucesso na operação",
             "schema": {
-              "$ref": "#/definitions/Monstro"
-            }
+              "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "integer"
+                  },
+                  "monstros": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "desafio": {
+                          "type": "string"
+                        },
+                        "xp": {
+                          "type": "integer"
+                        },
+                        "nome": {
+                          "type": "string"
+                        },
+                        "tipo": {
+                          "type": "string"
+                        },
+                        "tamanho": {
+                          "type": "string"
+                        },
+                        "tendencia": {
+                          "type": "string"
+                        },
+                        "atributo": {
+                          "type": "object",
+                          "properties": {
+                            "forca": {
+                              "type": "integer"
+                            },
+                            "destreza": {
+                              "type": "integer"
+                            },
+                            "constituicao": {
+                              "type": "integer"
+                            },
+                            "inteligencia": {
+                              "type": "integer"
+                            },
+                            "sabedoria": {
+                              "type": "integer"
+                            },
+                            "carisma": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "deloscamento": {
+                          "type": "object",
+                          "properties": {
+                            "escalada": {
+                              "type": "number"
+                            },
+                            "voo": {
+                              "type": "number"
+                            },
+                            "escavacao": {
+                              "type": "number"
+                            },
+                            "deslocamento": {
+                              "type": "number"
+                            },
+                            "natacao": {
+                              "type": "number"
+                            }
+                          }
+                        },
+                        "idioma": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "imunidade": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "Reacoes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "sentido": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "tipo": {
+                                "type": "string"
+                              },
+                              "alcance": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "teste_resistencia": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "tipo": {
+                                "type": "string"
+                              },
+                              "bonus": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "pericia": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "tipo": {
+                                "type": "string"
+                              },
+                              "bonus": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "resistencia_dano": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "tracos": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "tipo": {
+                                "type": "string"
+                              },
+                              "descricao": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "acao": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "tipo": {
+                                "type": "string"
+                              },
+                              "descricao": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "acao_lendaria": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "tipo": {
+                                "type": "string"
+                              },
+                              "descricao": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "equipamento": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            
           },
           "400": {
             "description": " ta bugado me chama laurencio.arkauss@gmail.com "
@@ -125,7 +478,7 @@
         }
       }
     },
-    "/monster/getMonster/": {
+    "/monster/getMonstro": {
       "get": {
         "tags": [
           "Monstro"
@@ -230,7 +583,7 @@
         }
       }
     },
-    "/monster/getAtrib/": {
+    "/monster/getAtrib": {
       "get": {
         "tags": [
           "Monstro"
@@ -338,7 +691,7 @@
         }
       }
     },
-    "/monster/getDesloc/": {
+    "/monster/getDesloc": {
       "get": {
         "tags": [
           "Monstro"
@@ -436,7 +789,7 @@
         }
       }
     },
-    "/monster/getPericia/": {
+    "/monster/getPericia": {
       "get": {
         "tags": [
           "Monstro"
@@ -519,7 +872,7 @@
         }
       }
     },
-    "/monster/getIdioma/": {
+    "/monster/getIdioma": {
       "get": {
         "tags": [
           "Monstro"
@@ -594,7 +947,7 @@
         }
       }
     },
-    "/monster/getSentido/": {
+    "/monster/getSentido": {
       "get": {
         "tags": [
           "Monstro"
@@ -677,7 +1030,7 @@
         }
       }
     },
-    "/monster/getResistenciaDano/": {
+    "/monster/getResistenciaDano": {
       "get": {
         "tags": [
           "Monstro"
@@ -752,7 +1105,7 @@
         }
       }
     },
-    "/monster/getReacoes/": {
+    "/monster/getReacoes": {
       "get": {
         "tags": [
           "Monstro"
@@ -827,7 +1180,7 @@
         }
       }
     },
-    "/monster/getTesteResistencia/": {
+    "/monster/getTesteResistencia": {
       "get": {
         "tags": [
           "Monstro"
@@ -910,7 +1263,7 @@
         }
       }
     },
-    "/monster/getImunidade/": {
+    "/monster/getImunidade": {
       "get": {
         "tags": [
           "Monstro"
@@ -985,7 +1338,7 @@
         }
       }
     },
-    "/monster/getEquipamentos/": {
+    "/monster/getEquipamentos": {
       "get": {
         "tags": [
           "Monstro"
@@ -1060,7 +1413,7 @@
         }
       }
     },
-    "/analise/getAllTipo/": {
+    "/analise/getAllTipo": {
       "get": {
         "tags": [
           "Dados"
@@ -1107,7 +1460,7 @@
         }
       }
     },
-    "/analise/getAllSentidos/": {
+    "/analise/getAllSentidos": {
       "get": {
         "tags": [
           "Dados"
@@ -1154,7 +1507,7 @@
         }
       }
     },
-    "/analise/getAllPericia/": {
+    "/analise/getAllPericia": {
       "get": {
         "tags": [
           "Dados"
@@ -1201,7 +1554,7 @@
         }
       }
     },
-    "/analise/getAllImunidades/": {
+    "/analise/getAllImunidades": {
       "get": {
         "tags": [
           "Dados"
@@ -1248,7 +1601,7 @@
         }
       }
     },
-    "/analise/getAllVulnerabilidade/": {
+    "/analise/getAllVulnerabilidade": {
       "get": {
         "tags": [
           "Dados"
@@ -1295,7 +1648,7 @@
         }
       }
     },
-    "/analise/getAllReacoes/": {
+    "/analise/getAllReacoes": {
       "get": {
         "tags": [
           "Dados"
@@ -1342,7 +1695,7 @@
         }
       }
     },
-    "/analise/getAllEquipamentos/": {
+    "/analise/getAllEquipamentos": {
       "get": {
         "tags": [
           "Dados"
@@ -1389,7 +1742,7 @@
         }
       }
     },
-    "/analise/getAllResistenciaDano/": {
+    "/analise/getAllResistenciaDano": {
       "get": {
         "tags": [
           "Dados"
@@ -1437,236 +1790,8 @@
       }
     }
   },
-  "definitions": {
-    "Register": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "desafio": {
-            "type": "integer"
-          },
-          "xp": {
-            "type": "integer"
-          },
-          "nome": {
-            "type": "string"
-          },
-          "tipo": {
-            "type": "string"
-          },
-          "tamanho": {
-            "type": "string"
-          },
-          "tendencia": {
-            "type": "string"
-          },
-          "pv": {
-            "type": "string"
-          },
-          "ca": {
-            "type": "integer"
-          }
-        }
-      }
-    },
-    "Monstro": {
-      "type": "object",
-      "properties": {
-        "count": {
-          "type": "integer"
-        },
-        "monstros": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "desafio": {
-                "type": "string"
-              },
-              "xp": {
-                "type": "integer"
-              },
-              "nome": {
-                "type": "string"
-              },
-              "tipo": {
-                "type": "string"
-              },
-              "tamanho": {
-                "type": "string"
-              },
-              "tendencia": {
-                "type": "string"
-              },
-              "atributo": {
-                "type": "object",
-                "properties": {
-                  "forca": {
-                    "type": "integer"
-                  },
-                  "destreza": {
-                    "type": "integer"
-                  },
-                  "constituicao": {
-                    "type": "integer"
-                  },
-                  "inteligencia": {
-                    "type": "integer"
-                  },
-                  "sabedoria": {
-                    "type": "integer"
-                  },
-                  "carisma": {
-                    "type": "integer"
-                  }
-                }
-              },
-              "deloscamento": {
-                "type": "object",
-                "properties": {
-                  "escalada": {
-                    "type": "number"
-                  },
-                  "voo": {
-                    "type": "number"
-                  },
-                  "escavacao": {
-                    "type": "number"
-                  },
-                  "deslocamento": {
-                    "type": "number"
-                  },
-                  "natacao": {
-                    "type": "number"
-                  }
-                }
-              },
-              "idioma": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "imunidade": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "Reacoes": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "sentido": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "tipo": {
-                      "type": "string"
-                    },
-                    "alcance": {
-                      "type": "integer"
-                    }
-                  }
-                }
-              },
-              "teste_resistencia": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "tipo": {
-                      "type": "string"
-                    },
-                    "bonus": {
-                      "type": "integer"
-                    }
-                  }
-                }
-              },
-              "pericia": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "tipo": {
-                      "type": "string"
-                    },
-                    "bonus": {
-                      "type": "integer"
-                    }
-                  }
-                }
-              },
-              "resistencia_dano": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "tracos": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "tipo": {
-                      "type": "string"
-                    },
-                    "descricao": {
-                      "type": "integer"
-                    }
-                  }
-                }
-              },
-              "acao": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "tipo": {
-                      "type": "string"
-                    },
-                    "descricao": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "acao_lendaria": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "tipo": {
-                      "type": "string"
-                    },
-                    "descricao": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "equipamento": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
   "externalDocs": {
-    "description": "Find out more about Swagger",
-    "url": "http://swagger.io"
+    "description": "GitHub",
+    "url": "https://github.com/laurencioScript/api_monster"
   }
 }

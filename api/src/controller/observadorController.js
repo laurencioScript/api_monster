@@ -2,7 +2,7 @@ const Monster = require('./../models/monster');
 const express = require('express');   
 const router = express.Router();
 
-router.get('/getAllTipo/', async (req, res) => {
+router.get('/getAllTipo', async (req, res) => {
     try {
 
         const monstro_input = await Monster.find(null,{tipo:1}).populate(['Monster']);
@@ -33,7 +33,7 @@ router.get('/getAllTipo/', async (req, res) => {
     }
 });
 
-router.get('/getAllSentidos/', async (req, res) => {
+router.get('/getAllSentidos', async (req, res) => {
     try {
 
         const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','sentidos']);
@@ -65,7 +65,7 @@ router.get('/getAllSentidos/', async (req, res) => {
     }
 });
 
-router.get('/getAllPericias/', async (req, res) => {
+router.get('/getAllPericias', async (req, res) => {
     try {
 
         const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','pericia']);
@@ -97,7 +97,7 @@ router.get('/getAllPericias/', async (req, res) => {
     }
 });
 
-router.get('/getAllImunidades/', async (req, res) => {
+router.get('/getAllImunidades', async (req, res) => {
     try {
 
         const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','imunidades']);
@@ -129,7 +129,7 @@ router.get('/getAllImunidades/', async (req, res) => {
     }
 });
 
-router.get('/getAllVulnerabilidades/', async (req, res) => {
+router.get('/getAllVulnerabilidades', async (req, res) => {
     try {
 
         const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','vulnerabilidade']);
@@ -161,7 +161,7 @@ router.get('/getAllVulnerabilidades/', async (req, res) => {
     }
 });
 
-router.get('/getAllIdiomas/', async (req, res) => {
+router.get('/getAllIdiomas', async (req, res) => {
     try {
 
         const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','idioma']);
@@ -193,7 +193,7 @@ router.get('/getAllIdiomas/', async (req, res) => {
     }
 });
 
-router.get('/getAllReacoes/', async (req, res) => {
+router.get('/getAllReacoes', async (req, res) => {
     try {
 
         const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','reacao']);
@@ -225,7 +225,7 @@ router.get('/getAllReacoes/', async (req, res) => {
     }
 });
 
-router.get('/getAllEquipamentos/', async (req, res) => {
+router.get('/getAllEquipamentos', async (req, res) => {
     try {
 
         const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','equipamento']);
@@ -257,7 +257,7 @@ router.get('/getAllEquipamentos/', async (req, res) => {
     }
 });
 
-router.get('/getAllResistenciaDano/', async (req, res) => {
+router.get('/getAllResistenciaDano', async (req, res) => {
     try {
 
         const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','resistencia_dano']);

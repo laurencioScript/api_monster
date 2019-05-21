@@ -1749,69 +1749,68 @@
     ]
   },
   {
-    "desafio": "1/4",
-    "xp": 50,
-    "nome": "dretch",
+    "desafio": "5",
+    "xp": 1800,
+    "nome": "cambion",
     "tipo": "corruptor",
-    "tamanho": "pequeno",
+    "tamanho": "médio",
     "tendencia": "CM",
-    "pontosDeVida": "4D6+4",
-    "classeArmadura": 11,
+    "pontosDeVida": "11D8+3",
+    "classeArmadura": 19,
     "atributo": {
-      "forca": 11.0,
-      "destreza": 11.0,
-      "constituicao": 12.0,
-      "inteligencia": 5.0,
-      "sabedoria": 8.0,
-      "carisma": 3.0
+      "forca": 18.0,
+      "destreza": 18.0,
+      "constituicao": 16.0,
+      "inteligencia": 14.0,
+      "sabedoria": 12.0,
+      "carisma": 16.0
     },
     "deslocamento": {
       "escalada": 0.0,
-      "voo": 0.0,
+      "voo": 18.0,
       "escavacao": 0.0,
-      "deslocamento": 6.0,
+      "deslocamento": 9.0,
       "natacao": 0.0
     },
     "idiomas": [
       "abissal",
-      "telepatia"
+      "comum",
+      "infernal"
     ],
     "resistencia_dano": [
-      ""
+      "elétrico","fogo","frio","veneno","concussão, cortante e perfurante de ataques não-mágicos"
     ],
-    "teste_resistencia": [],
-    "pericia": [],
+    "teste_resistencia": [{"tipo":"força","valor":"7"},{"tipo":"constituição","valor":"6"},{"tipo":"inteligencia","valor":"5"},{"tipo":"carisma","valor":"6"}],
+    "pericia": [{"tipo":"enganação","valor":"6"},{"tipo":"furtividade","valor":"7"},{"tipo":"intimidação","valor":"6"},{"tipo":"percepção","valor":"4"}],
     "imunidades": [
-      "veneno",
-      "envenenado"
     ],
     "tracos_especiais": [
-      ""
+      "Bênção Infernal. A CA do cambion inclui seu bônus de Carisma.",
+      "Conjuração Inata. A habilidade de conjuração de um cambion é Carisma (CD de resistência de magia 14). Ele pode conjurar, inatamente, as seguintes magias, sem necessidade de componentes materiais: 3/dia cada: alterar-se, comando, detectar magia 1/dia: viagem planar (pessoal apenas) "
     ],
     "acao": [
-      "ataques múltiplos. o dretch realiza dois ataques: um com suamordida e um com suas garras.",
-      "mordida. ataque corpo-a-corpo com arma: +2 para atingir,alcance 1,5 m, um alvo. acerto: 3 (1d6) de dano perfurante.",
-      "garras. ataque corpo-a-corpo com arma: +2 para atingir, alcance1,5 m, um alvo. acerto: 5 (2d4) de dano cortante.",
-      "nuvem fétida (1/dia). um gás esverdeado nojento se estende dodretch num raio de 3 metros. o gás se espalha, dobrando esquinase sua área é de escuridão leve. ela dura por 1 minuto ou até queum vento forte a disperse. qualquer criatura que comece seuturno na área deve ser bem sucedida num teste de resistência deconstituição cd 11 ou ficará envenenada até o início do próximoturno dela. enquanto estiver envenenada dessa forma, o alvo sópode realizar uma ação ou uma ação bônus no seu turno, mas nãoambas, e não pode realizar reações."
+      "Ataques Múltiplos. O cambion realiza dois ataques corpo-a- corpo ou usa seu Raio de Fogo duas vezes. ",
+      "Lança. Ataque Corpo-a-Corpo com Arma: +7 para atingir, alcance 1,5 m ou distância 6 m/18 m, um alvo. Acerto: 7 (1d6 + 4) de dano perfurante ou 8 (1d8 + 4) de dano perfurante se usado com duas mãos para realizar um ataque corpo-a-corpo, mais 3 (1d6) de dano de fogo. ",
+      "Raio de Fogo. Ataque à Distância com Magia: +7 para atingir, distância 36 m, um alvo. Acerto: 10 (3d6) de dano de fogo. ",
+      "Charme Demoníaco. Um humanoide que o cambion possa ver, a até 9 metros, deve ser bem sucedido num teste de resistência de Sabedoria CD 14 ou ficará magicamente enfeitiçado por 1 dia. O alvo enfeitiçado obedece aos comandos falados pelo cambion. Se o alvo sofrer qualquer ferimento do cambion ou de outra criatura ou se receber um comando suicida do cambion, o alvo pode repetir o teste de resistência, terminando o efeito se obtiver sucesso. Se o teste de resistência do alvo for bem sucedido, ou se o efeito terminar nele, a criatura fica imune ao Charme Demoníaco do cambion pelas próximas 24 horas. "
     ],
     "vulnerabilidades": [
-      ""
     ],
     "sentidos": [
       {
         "tipo": "visão no escuro",
-        "valor": 36.0
+        "valor": 18.0
       },
       {
         "tipo": "percepção passiva",
-        "valor": 9.0
+        "valor": 14.0
       }
     ],
     "reacoes": [
       ""
     ],
     "equipamentos": [
-      ""
+      "brunea","lança"
     ],
     "acaoLendarias": [
       ""
@@ -5024,7 +5023,7 @@
     "nome": "alossauro",
     "tipo": "besta",
     "tamanho": "grande",
-    "tendencia": "N",
+    "tendencia": "I",
     "pontosDeVida": "6D10+18",
     "classeArmadura": 13,
     "atributo": {
@@ -5090,7 +5089,7 @@
     "nome": "anquilossauro",
     "tipo": "besta",
     "tamanho": "enorme",
-    "tendencia": "N",
+    "tendencia": "I",
     "pontosDeVida": "8D12+16",
     "classeArmadura": 15,
     "atributo": {
@@ -5150,7 +5149,7 @@
     "nome": "plesiossauro",
     "tipo": "besta",
     "tamanho": "grande",
-    "tendencia": "N",
+    "tendencia": "I",
     "pontosDeVida": "8D10+24",
     "classeArmadura": 13,
     "atributo": {
@@ -5219,7 +5218,7 @@
     "nome": "pteranodonte",
     "tipo": "besta",
     "tamanho": "médio",
-    "tendencia": "N",
+    "tendencia": "I",
     "pontosDeVida": "3D8",
     "classeArmadura": 13,
     "atributo": {
@@ -5284,7 +5283,7 @@
     "nome": "tiranossauro",
     "tipo": "besta",
     "tamanho": "enorme",
-    "tendencia": "N",
+    "tendencia": "I",
     "pontosDeVida": "13D12+52",
     "classeArmadura": 13,
     "atributo": {
@@ -5351,7 +5350,7 @@
     "nome": "tricerátops",
     "tipo": "besta",
     "tamanho": "enorme",
-    "tendencia": "N",
+    "tendencia": "I",
     "pontosDeVida": "10D12+30",
     "classeArmadura": 13,
     "atributo": {
