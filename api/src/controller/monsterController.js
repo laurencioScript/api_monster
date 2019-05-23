@@ -19,7 +19,7 @@
                 const { nome,tipo,desafio,xp,tamanho,tendencia,ca,pv, atributo,
                         deslocamento,tracos,idiomas,sentidos,resistencia_dano,
                         teste_resistencia,pericia,vulnerabilidades,imunidades,acao,acaoLendarias,
-                        reacao,equipamentos } = monstros[x];
+                        reacoes,equipamentos } = monstros[x];
                 console.log(nome);
                 const monster = await factory.Monster.create({ nome,desafio,pv,ca,tipo,xp,tamanho,tendencia});
                     
@@ -152,8 +152,8 @@
                         
                     }));
         
-                if(reacao != undefined)
-                    await Promise.all(reacao.map(async reacao => {
+                if(reacoes != undefined)
+                    await Promise.all(reacoes.map(async reacao => {
                         if(reacao['tipo'] != ""){
                             const monsterReacao = new factory.Reacao({"tipo":reacao['tipo'],"descricao":reacao['descricao'], monster: monster._id });
                 
@@ -175,7 +175,7 @@
                         }
                         
                     }));
-        
+                    
                 await monster.save();
                 res.statusMessage = "esta sendo processado";
             }

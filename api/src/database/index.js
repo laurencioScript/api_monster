@@ -19,6 +19,7 @@ if(false){
         db.dropCollection("tracos");
         db.dropCollection("vulnerabilidades");
         db.dropCollection("deslocamentos");
+        db.dropCollection("reacaos");
     
     
     });

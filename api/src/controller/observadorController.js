@@ -2,7 +2,7 @@ const Monster = require('./../models/monster');
 const express = require('express');   
 const router = express.Router();
 
-router.get('/getAllTipo', async (req, res) => {
+router.get('/getAllTipos', async (req, res) => {
     try {
 
         const monstro_input = await Monster.find(null,{tipo:1}).populate(['Monster']);
@@ -36,18 +36,19 @@ router.get('/getAllTipo', async (req, res) => {
 router.get('/getAllSentidos', async (req, res) => {
     try {
 
-        const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','sentidos']);
+        const monstros = await Monster.find(null,{sentido:1}).populate(['Monster','sentido']);
         let original = []; let ocorrencias = []; let saida = [];
-
         for(let cont=0;cont<monstros.length;cont++){
-            if(monstros[cont]['sentidos']!=undefined){
-                for(let index=0;index<monstros[cont]['sentidos'].length;index++){
-                    if(original.indexOf(monstros[cont]['sentidos'][index]['tipo'])==-1){
-                        original.push(monstros[cont]['sentidos'][index]['tipo']);
+            
+            if(monstros[cont]['sentido']!=undefined){
+                for(let index=0;index<monstros[cont]['sentido'].length;index++){
+                    if(original.indexOf(monstros[cont]['sentido'][index]['tipo'])==-1){
+                        original.push(monstros[cont]['sentido'][index]['tipo']);
                         ocorrencias.push(1);
+                        
                     }
                     else{
-                        ocorrencias[original.indexOf(monstros[cont]['sentidos'][index]['tipo'])] +=1;
+                        ocorrencias[original.indexOf(monstros[cont]['sentido'][index]['tipo'])] +=1;
                     }
                 }
             }        
@@ -68,9 +69,9 @@ router.get('/getAllSentidos', async (req, res) => {
 router.get('/getAllPericias', async (req, res) => {
     try {
 
-        const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','pericia']);
+        const monstros = await Monster.find(null,{pericia:1}).populate(['Monster','pericia']);
         let original = []; let ocorrencias = []; let saida = [];
-
+        console.log()
         for(let cont=0;cont<monstros.length;cont++){
             if(monstros[cont]['pericia']!=undefined){
                 for(let index=0;index<monstros[cont]['pericia'].length;index++){
@@ -100,18 +101,18 @@ router.get('/getAllPericias', async (req, res) => {
 router.get('/getAllImunidades', async (req, res) => {
     try {
 
-        const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','imunidades']);
+        const monstros = await Monster.find(null,{imunidade:1}).populate(['Monster','imunidade']);
         let original = []; let ocorrencias = []; let saida = [];
 
         for(let cont=0;cont<monstros.length;cont++){
-            if(monstros[cont]['imunidades']!=undefined){
-                for(let index=0;index<monstros[cont]['imunidades'].length;index++){
-                    if(original.indexOf(monstros[cont]['imunidades'][index]['imunidade'])==-1){
-                        original.push(monstros[cont]['imunidades'][index]['imunidade']);
+            if(monstros[cont]['imunidade']!=undefined){
+                for(let index=0;index<monstros[cont]['imunidade'].length;index++){
+                    if(original.indexOf(monstros[cont]['imunidade'][index]['imunidade'])==-1){
+                        original.push(monstros[cont]['imunidade'][index]['imunidade']);
                         ocorrencias.push(1);
                     }
                     else{
-                        ocorrencias[original.indexOf(monstros[cont]['imunidades'][index]['imunidade'])] +=1;
+                        ocorrencias[original.indexOf(monstros[cont]['imunidade'][index]['imunidade'])] +=1;
                     }
                 }
             }        
@@ -132,7 +133,7 @@ router.get('/getAllImunidades', async (req, res) => {
 router.get('/getAllVulnerabilidades', async (req, res) => {
     try {
 
-        const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','vulnerabilidade']);
+        const monstros = await Monster.find(null,{vulnerabilidade:1}).populate(['Monster','vulnerabilidade']);
         let original = []; let ocorrencias = []; let saida = [];
 
         for(let cont=0;cont<monstros.length;cont++){
@@ -196,10 +197,10 @@ router.get('/getAllIdiomas', async (req, res) => {
 router.get('/getAllReacoes', async (req, res) => {
     try {
 
-        const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','reacao']);
+        const monstros = await Monster.find(null,{reacao:1}).populate(['Monster','reacao']);
         let original = []; let ocorrencias = []; let saida = [];
-        
         for(let cont=0;cont<monstros.length;cont++){
+            console.log(monstros[cont])
             if(monstros[cont]['reacao']!=undefined){
                 for(let index=0;index<monstros[cont]['reacao'].length;index++){
                     if(original.indexOf(monstros[cont]['reacao'][index]['tipo'])==-1){
@@ -257,7 +258,7 @@ router.get('/getAllEquipamentos', async (req, res) => {
     }
 });
 
-router.get('/getAllResistenciaDano', async (req, res) => {
+router.get('/getAllResistenciasDano', async (req, res) => {
     try {
 
         const monstros = await Monster.find(null,{tipo:1}).populate(['Monster','resistencia_dano']);

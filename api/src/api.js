@@ -13,5 +13,5 @@ let swaggerUi = require('swagger-ui-express'), swaggerDocument = require('./swag
 
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
 

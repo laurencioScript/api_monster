@@ -210,8 +210,20 @@ function convert(monstros)
         monstro.nome = monstros[cont]['nome'];
         monstro.tipo = monstros[cont]['tipo'];
         monstro.tamanho = monstros[cont]['tamanho'];
-        monstro.tendencia = monstros[cont]['tendencia'];
-        monstro.pv = monstros[cont]['pontosDeVida'];
+        
+        if(monstros[cont]['tendencia'].indexOf("E") > -1 ){
+            monstros[cont]['tendencia'] = monstros[cont]['tendencia'].replace("E","M")
+            monstro.tendencia = monstros[cont]['tendencia'];
+        }
+        else if(monstros[cont]['tendencia'].indexOf("G") > -1 ){
+            monstros[cont]['tendencia'] = monstros[cont]['tendencia'].replace("G","B")
+            monstro.tendencia = monstros[cont]['tendencia'];
+        }
+        else{
+            monstro.tendencia = monstros[cont]['tendencia'];
+        }
+        
+            monstro.pv = monstros[cont]['pontosDeVida'];
         monstro.ca= monstros[cont]['classeArmadura'];
 
         monstro.atributo =  monstros[cont]['atributo'];

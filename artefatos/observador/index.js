@@ -2,7 +2,7 @@ const clean = require('./clean');
 const show = require('./show');
 const axios = require('axios');
 
-const path = ['gabriel','danilo','lucas'];
+const path = ['gabriel','danilo','lucas','matheus'];
 
 function readJson(path){
     const fs = require("fs");
@@ -25,7 +25,7 @@ function load(){
 function writeJson(monstros){
     const fs = require('fs');
     obj = JSON.stringify(monstros,null, '\t');
-    fs.writeFile("./../livro/g2.json",obj, function(err) {
+    fs.writeFile("./../livro/final.json",obj, function(err) {
         if(err) {
             console.log(err);
         } else {
@@ -37,11 +37,12 @@ function writeJson(monstros){
 async function main(){
     
     let monstros = load();
-    monstros = clean.convert(monstros);
-    monstros = clean.clear(monstros);
-   
-    // writeJson(monstros);
-   //console.log(monstros.length+' monstros cadastrados');
+    show.showMonsterTendencia (monstros)
+    //monstros = clean.convert(monstros);
+    //monstros = clean.clear(monstros);
+    
+    //writeJson(monstros);
+   console.log(monstros.length+' monstros cadastrados');
    
    /** 
    try{
