@@ -37,12 +37,26 @@ function writeJson(monstros){
 async function main(){
     
     let monstros = load();
-    show.showMonsterTendencia (monstros)
-    //monstros = clean.convert(monstros);
-    //monstros = clean.clear(monstros);
+    //show.showMonster(monstros)
+    //show.showMonsterTamanho(monstros)
+    //show.showMonsterTendencia(monstros)
+    //show.showMonsterTipo(monstros)
+    //show.showPericia(monstros)
+    //show.showRD(monstros)
+    //show.showReacoes(monstros)
+    //show.showSentidos(monstros)
+    //show.showTR(monstros)
+    //show.showVulni(monstros)
+    //show.showImuni(monstros)
+    //show.showIdiomas(monstros)
+    //show.showEquips(monstros)
     
-    //writeJson(monstros);
-   console.log(monstros.length+' monstros cadastrados');
+    
+    monstros = clean.convert(monstros);
+    monstros = clean.clear(monstros);
+    
+    writeJson(monstros);
+    console.log(monstros.length+' monstros cadastrados');
    
    /** 
    try{

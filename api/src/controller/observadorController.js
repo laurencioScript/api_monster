@@ -200,7 +200,6 @@ router.get('/getAllReacoes', async (req, res) => {
         const monstros = await Monster.find(null,{reacao:1}).populate(['Monster','reacao']);
         let original = []; let ocorrencias = []; let saida = [];
         for(let cont=0;cont<monstros.length;cont++){
-            console.log(monstros[cont])
             if(monstros[cont]['reacao']!=undefined){
                 for(let index=0;index<monstros[cont]['reacao'].length;index++){
                     if(original.indexOf(monstros[cont]['reacao'][index]['tipo'])==-1){

@@ -176,7 +176,7 @@ function showAcao(monstros){
 }
 
 function showReacoes(monstros){
-    structTipo(monstros,'reacoes')
+    structColecao(monstros,'reacoes')
 }
 
 

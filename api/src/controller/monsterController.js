@@ -222,7 +222,7 @@
         try {
             const obj = manipulador.getObjParams(req.query);
 
-            const monstro = await factory.Monster.find(obj,{nome:1,desafio:1,pv:1,ca:1,tipo:1,tamanho:1,}).sort({nome:1})
+            const monstro = await factory.Monster.find(obj,{nome:1,desafio:1,tendencia:1,pv:1,ca:1,tipo:1,tamanho:1,}).sort({nome:1})
         
             return res.send({ "Count":monstro.length,"Monstros":monstro });
 
@@ -393,9 +393,8 @@
 
     router.get('/getEquipamento', async (req, res) => {
         try {
-
             const obj = manipulador.getArrayParams(req.query);
-            
+
             const monstro_input = await factory.Monster.find().populate(['Monster','equipamento']);
             
             const monstro_output = Monster.listeMonstros(monstro_input,'equipamento',obj);
