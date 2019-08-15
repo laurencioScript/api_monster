@@ -1,4 +1,4 @@
-    const allParms = ['Monster', 'tracos','idiomas','sentidos','resistencia_dano','pericia' ,'acao','teste_resistencia','acao_lendaria','reacao','equipamentos', 'vulnerabilidades','imunidades','atributo','deslocamento'];
+    const allParms = ['Monster', 'tracos','idioma','sentido','resistencia_dano','pericia' ,'acao','teste_resistencia','acao_lendaria','reacao','equipamento', 'vulnerabilidade','imunidade','atributo','deslocamento'];
     const factory = require('./../models/Factory');
     const Monster = require('./class/Monster');
     const express = require('express');   
@@ -208,7 +208,7 @@
             let saida = []; 
 
             monstros.map(async monstro =>{
-                saida.push(new Monster(monstro));
+                saida.push(new Monster(monstro) );
             })
             
             return res.send({ "count":saida.length,"Monstros":saida });

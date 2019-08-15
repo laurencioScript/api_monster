@@ -1,6 +1,6 @@
 class Monster{
     constructor(monstro){
-        
+        console.log(monstro)
         this.id = monstro['_id'];
         this.desafio = monstro['desafio'];
         this.xp = monstro['xp'];
@@ -8,8 +8,8 @@ class Monster{
         this.tipo = monstro['tipo'];
         this.tamanho = monstro['tamanho'];
         this.tendencia = monstro['tendencia'];
-        this.pv = monstro['pontosDeVida'];
-        this.ca= monstro['classeArmadura'];
+        this.pv = monstro['pv'];
+        this.ca= monstro['ca'];
     
         const {forca,destreza,constituicao,inteligencia,sabedoria,carisma} = monstro['atributo'];
         this.atributo =  {forca,destreza,constituicao,inteligencia,sabedoria,carisma};
@@ -17,23 +17,23 @@ class Monster{
         const {voo,deslocamento,escalada,natacao,escavacao} = monstro['deslocamento']; 
         this.deslocamento = {voo,deslocamento,escalada,natacao,escavacao} ;
         
-        if(monstro['equipamentos'] != undefined){
+        if(monstro['equipamento'] != undefined){
             this.equipamentos = [];
-            monstro['equipamentos'].map(async elemento => {
+            monstro['equipamento'].map(async elemento => {
                 this.equipamentos.push(elemento.equipamento);
             })
         }
     
-        if(monstro['idiomas'] != undefined){
+        if(monstro['idioma'] != undefined){
             this.idiomas = [];
-            monstro['idiomas'].map(async elemento => {
+            monstro['idioma'].map(async elemento => {
                 this.idiomas.push(elemento.idioma);
             })
         }
         
-        if(monstro['imunidades'] != undefined){
+        if(monstro['imunidade'] != undefined){
             this.imunidades = [];
-            monstro['imunidades'].map(async elemento => {
+            monstro['imunidade'].map(async elemento => {
                 this.imunidades.push(elemento.imunidade);
             })
         }
@@ -52,9 +52,9 @@ class Monster{
             })
         }
        
-        if(monstro['sentidos'] != undefined){
+        if(monstro['sentido'] != undefined){
             this.sentidos = [];
-            monstro['sentidos'].map(async elemento => {
+            monstro['sentido'].map(async elemento => {
                 this.sentidos.push({"sentido":elemento.tipo,"alcance":elemento.valor});
             })
         }
@@ -66,9 +66,9 @@ class Monster{
             })
         }
         
-        if(monstro['vulnerabilidades'] != undefined){
+        if(monstro['vulnerabilidade'] != undefined){
             this.vulnerabilidades = [];
-            monstro['vulnerabilidades'].map(async elemento => {
+            monstro['vulnerabilidade'].map(async elemento => {
                 this.vulnerabilidades.push(elemento.vulnerabilidade);
             })
         }
