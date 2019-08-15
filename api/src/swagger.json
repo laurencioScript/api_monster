@@ -9,7 +9,7 @@
     "description": "GitHub",
     "url": "https://github.com/laurencioScript/api_monster"
   },
-  "host": "localhost:8080/",
+  "host": "node-monster.herokuapp.com/",
   "tags": [
     {
       "name": "Dados",
