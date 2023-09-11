@@ -1,4 +1,4 @@
-# API_MONSTER D&D
+# Node Monster
 
 Projeto desenvolvido durante o 4º semestre da faculdade.
 
